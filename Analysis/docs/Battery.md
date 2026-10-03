@@ -13,7 +13,7 @@ The battery capacity (mAh) or charge capacity is the total amount of electrical 
 Identifying from the voltage-current discharge plot (Figure 1-1) the discharge current and the time duration of constant current until the sharp drop gives an estimate about the battery capacity.
 
 $$
-Capacity =\frac{1.0\text{\ A}\times 6340\text{\ sec}}{3600\text{\ sec/hr}} = \mathbf{1.760} \text{\ Ah} = 1760 \text{\ mAh}
+Capacity =\frac{1.0\,\mathrm{A}\times 6340\,\mathrm{s}}{3600\,\mathrm{s/hr}} = \mathbf{1.760}\,\mathrm{Ah} = 1760\,\mathrm{mAh}
 $$
 
 
@@ -27,7 +27,7 @@ The battery topology that can be ascertained from the plots is that this is a ty
 
   So there are :
   
-$25.22\text{\ V}\div 4.2\text{\ V\ per\ cell}=\mathbf{6}\text{\ cells\ in\ series}$
+  $25.22\,\mathrm{V}\div 4.2\,\text{V per cell}=\mathbf{6}\,\text{cells in series}$
 
 The topology in terms of the voltage provision is 6 cells in series (6S).
 In terms of capacity provision, the parallel topology is likely a single string of cells (1P) due to the fact that the capacity is 1800 mA. It is a 6S1P.
@@ -48,7 +48,7 @@ which is around $\tau = 6451 - 6340 = 111 \text{ sec}$
 If $R_0= 25 \text{m}\Omega $ and $R_1= 12.5 \text{m}\Omega $ 
 then
 
-$$C_{1}=\frac{\tau }{R_{1}}=\frac{111 \text{\ s}}{0.0125\ \Omega }=\mathbf{8880}\text{\ Farads} $$
+$$C_{1}=\frac{\tau }{R_{1}}=\frac{111\,\mathrm{s}}{0.0125\,\Omega}=\mathbf{8880}\,\mathrm{F} $$
 
 
 ### SoC Coulomb counting:
@@ -97,7 +97,7 @@ from the [`battery_flight.csv`]('battery_flight.csv') data, the max cell voltage
 To find an estimate of the battery capacity from the current data, trapezoidal equation is used for discrete data points, the equation to sum up the area under your current-vs-time curve is: 
 
 $$
-Q_{\text{act}}=\frac{1}{3600}\sum _{k=2}^{N}\left(\frac{|I_{k}|+|I_{k-1}|}{2}\right)\times (t_{k}-t_{k-1})
+Q_{\text{act}}=\frac{1}{3600}\sum_{k=2}^{N}\left(\frac{\lvert I_k\rvert+\lvert I_{k-1}\rvert}{2}\right)(t_k-t_{k-1})
 $$
 
 The battery capcity of 4S1P with the energy/current draw provided, is $\mathbf{Q = 10000 \text{ mAh}}$
@@ -124,8 +124,8 @@ The measured pack voltage is divided by six before estimation; the plotted model
 | $C_1=\tau/R_1$ | $8880\text{ F}$ | Cell polarization capacitance |
 | Initial SoC | $0.999$ ($99.9\%$) | Initial state at the first sample |
 | Initial polarization voltage | $0\text{ V}$ | Initial state at the first sample |
-| Initial covariance, $P_0$ | $\operatorname{diag}(0.01,\ 0.05)$ | Variances for the state $[v_1, SoC]$ |
-| Process covariance, $Q$ | $\operatorname{diag}(10^{-4},\ 10^{-7})$ per sample | Process/State-model uncertainty |
+| Initial covariance, $P_0$ | $\operatorname{diag}(0.01,\,0.05)$ | Variances for the state $[v_1, SoC]$ |
+| Process covariance, $Q$ | $\operatorname{diag}(10^{-4},\,10^{-7})$ per sample | Process/State-model uncertainty |
 | Voltage measurement variance, $R_v$ | $1.96 \times 10^{-6}\text{ V}^2$ | Equivalent standard deviation: $10\text{ mV}$ per cell |
 
 The CSV current is positive for discharge, while the estimator defines positive current as charging. 

@@ -21,6 +21,7 @@ where $\delta\theta\in\mathbb{R}^3$ is the local attitude error (roll, pitch, ya
 The file provides 9,073 samples spanning about 65.28 seconds. We convert the timestamps to seconds. The median interval is 8.00 ms, with intervals mostly between roughly 5 and 10 ms and occasional larger gaps. This translate to between sample rate of 100 to 200 Hz 
 
 ![Roll and pitch ESKF estimate compared with gyro-only integration](../pics/rawGyroAccelMeas.png)
+
 *Figure 1-1: Raw Gyro and Accelerometer reading*
 
 ## State-space model and initialization
@@ -139,7 +140,8 @@ The **first-order** discrete transition and discrete process covariance:
 
 $$
 F_k=I_6+F_c\Delta t_k
-=\begin{bmatrix}I-[\hat\omega_k]_\times\Delta t_k&-I\Delta t_k\\0&I\end{bmatrix}
+=\begin{bmatrix}I-[\hat\omega_k]_\times\Delta t_k&-I\Delta t_k \\
+0&I\end{bmatrix}
 $$
 
 $$
@@ -221,16 +223,17 @@ $$
 
 Refer to appendix for the relationship between DCM and quaternion based attitude 
 
-## **- Summary of Steps:**
+## **Summary of Steps:**
 
 
+**Initialization:**
+- In this step, mean gyro and mean accelerometer over the initial window. We set initial gyro bias and initial roll/pitch orientation; yaw remains arbitrary.
 
-	- **Initialization:**
-		- In this step, mean gyro and mean accelerometer over the initial window. We set initial gyro bias and initial roll/pitch orientation; yaw remains arbitrary.
-	- **Prediction:**
-		- In this step, we integrate the 3-axis gyro's angular rates through  quaternion representation and propagate error covariance.
-	- ** Update:**
-		- We incorporate the three-axis accelerometer vector samples. We compare the measured acceleration vector with a predicted gravity directions to correct attitude and maintain boundaed gyro-bias components.
+**Prediction:**
+- In this step, we integrate the 3-axis gyro's angular rates through  quaternion representation and propagate error covariance.
+
+** Update:**
+- We incorporate the three-axis accelerometer vector samples. We compare the measured acceleration vector with a predicted gravity directions to correct attitude and maintain boundaed gyro-bias components.
 
 
 For comparison purposes, we solve the gyro signal integrated in time  with initial mean bias substracted, but does not receive accelerometer corrections or estimate subsequent bias random-walk/integration.
@@ -259,6 +262,7 @@ These checks reduce the chance that translational acceleration is mistaken for t
 We compare in Figure 1-2 the Kalman-estimated roll and pitch with the integrated component of the measured gyro vector (raw angular rates).
 
 ![Roll and pitch ESKF estimate compared with gyro-only integration](../pics/eskf_attitude.png)
+
 *Figure 1-2: ESKF Roll and Pitch Estimation*
 
 The accelerometer corrections keep the roll and pitch estimates bounded relative to gyro only integration. The estimate of the attitude is incomplete because of missing relative or true north-relative information, and hence the yaw information  is not corrected by the accelerometer and drifts when gyro bias is integrated. The yaw is an absolute heading, and is estimated to be about -80 degrees from its arbitrary initial heading for the duration of integration. 
