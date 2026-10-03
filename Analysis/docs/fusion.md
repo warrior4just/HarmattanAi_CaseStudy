@@ -286,10 +286,13 @@ $$
 Euler angles are calculated from this DCM for reporting and plotting only; they are not propagated as the filter state. With the roll-pitch-yaw convention used by the code:
 
 $$
-\phi=\text{atan2}(R_{32},R_{33}) \\
-\theta=\text{atan2}(-R_{31},\sqrt{R_{32}^2+R_{33}^2}),
-\\
-\psi=\text{atan2}(R_{21},R_{11}),
+\phi=\text{atan2}(R_{32},R_{33}) 
+$$
+$$
+\theta=\text{atan2}(-R_{31},\sqrt{R_{32}^2+R_{33}^2}) 
+$$
+$$
+\psi=\text{atan2}(R_{21},R_{11})
 $$
 
 where $\phi$ is roll, $\theta$ is pitch, and $\psi$ is yaw in radians. 
