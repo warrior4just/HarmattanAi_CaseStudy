@@ -1,12 +1,12 @@
 # Harmattan AI- Case Study
 
 
-- ### [Sensor Fusion Page](Analysis/docs/fusion.md)
+- ### [Sensor Fusion Page](Analysis/docs/Sensor Fusion.md)
 ---
 
-- ### [Diagnostics and Loop Performance Improvement](Analysis/docs/loop_fix.md)
+- ### [Diagnostics and Loop Performance Improvement](Analysis/docs/Loop Fix.md)
 ---
-- ### [Quadcopter Model](Analysis/docs/rate_control.md)
+- ### [Quadcopter Model](Analysis/docs/Rate Control.md)
 ---
-- ### [Battery Management System](Analysis/docs/battery.md)
+- ### [Battery Management System](Analysis/docs/Battery.md)
 ---
