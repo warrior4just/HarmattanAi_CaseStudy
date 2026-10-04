@@ -340,7 +340,7 @@ This is the post controller stage entering the actuation (motors) which maps the
 
 
 $$
-\left[\begin{matrix}u_{1}\\ u_{2}\\ u_{3}\\ u_{4}\end{matrix}\right]=\left[\begin{matrix} 1 & 1 \\ -1 & 1 \\ -1 & -1 \\ 1 & -1 \end{matrix}\right]\left[\begin{matrix}\delta_p \\ \delta_q\end{matrix}\right]
+\left[\begin{matrix} u_1 \\ u_2 \\ u_2 \\ u_4 \end{matrix}\right] = \left[\begin{matrix} 1 & 1\\ -1 & 1\\ -1 & -1\\ 1 & -1\end{matrix}\right] \left[\begin{matrix}\delta_p \\ \delta_q\end{matrix}\right]
 $$
 
 
@@ -421,14 +421,14 @@ $$
 
 ### Frequency Responses: 
 
-The primary frequency response change afforded by the lead compensator is a significant upward shift of the entire magnitude curve. The magnitude at 1 rad/s has been raised from roughly $-10 dB$ to more $+25 dB$ for both transfer functions. This implies the Pitch-rate compensator introduced a high proportional gain $K_{p}$ to improve tracking and eliminate steady-state error. With this added gain, the gain crossover frequency is at $\omega_c$ of $34.38 rad/s$ (marked by the vertical dotted line). At this frequency a Phase Margin of 65.98° is observed and it's compliant with the design requirement. On the other hand the Gain Margin $G_m$ remains infinte since thephase asymptotically approaches but never rosses $-180°$. 
+The primary frequency response change afforded by the lead compensator is a significant upward shift of the entire magnitude curve. The magnitude at 1 rad/s has been raised from roughly $-10 dB$ to more $+25 dB$ for both transfer functions. This implies the Pitch-rate compensator introduced a high proportional gain $K_{p}$ to improve tracking and eliminate steady-state error. With this added gain, the gain crossover frequency is at $\omega_c$ of $34.38\ \mathrm{rad/s}$ (marked by the vertical dotted line). At this frequency a Phase Margin of 65.98° is observed and it's compliant with the design requirement. On the other hand the Gain Margin $G_m$ remains infinte since thephase asymptotically approaches but never rosses $-180°$. 
 
 ![Pitch-rate Compensated Open-Loop Bode Plot](../pics/compensatedPitchRateBodePlot.png)
 
 *Figure 1-4: Bode plot of compensated Open-loop for pitch rate*
 
 
-In the roll-rate compensator the Gain Margin remained at $\infty$ while the Phase Margin is $66.18^{\circ}$ at $41.25\,\mathrm{rad/s}$.
+In the roll-rate compensator the Gain Margin remained at $\infty$ while the Phase Margin is $66.18^{\circ}$ at $41.25\ \mathrm{rad/s}$.
 
 ![Roll-rate Compensated Open-Loop Bode Plot](../pics/compensatedRollRateBodePlot.png)
 
@@ -438,13 +438,13 @@ In the roll-rate compensator the Gain Margin remained at $\infty$ while the Phas
 
 ### Time-domain Transient Responses:
 
-From **Figure 1-6** we see that the rise time is just at $50.8 ms$ which is within the target rise time of $80 ms$. It is expected from type-1 system not to have steady-state error from a step response, nonetheless it is maintained with this implemented lead compensator. On the other hand, the velocity error from ramp input is 0.0286 rad/s and remains constant. 
+From **Figure 1-6** we see that the rise time is just at $50.8 ms$ which is within the target rise time of $80 ms$. It is expected from type-1 system not to have steady-state error from a step response, nonetheless it is maintained with this implemented lead compensator. On the other hand, the velocity error from ramp input is $0.0286\ \mathrm{rad/s}$ and remains constant. 
 
 ![Pitch-rate transient response to step, impulsve, and ramp input](../pics/InputsPitchRateResponse.png)
 
 *Figure 1-6: Step, impulse, and ramp input responses for pitch-rate closed-loop system*
 
-Similarly, from **Figure 1-7**, the rise time is just at 42.0 ms which is within the target rise time. Reference tracking via steady state error performs as required and the velocity error from ramp input is 0.0228 rad/s and remains constant. 
+Similarly, from **Figure 1-7**, the rise time is just at $42.0\ ms$ which is within the target rise time. Reference tracking via steady state error performs as required and the velocity error from ramp input is $0.0228\ \mathrm{rad/s}$ and remains constant. 
 
 ![Roll-ratetransient response to step, impulsve, and ramp input](../pics/InputsRollRateResponse.png)
 
