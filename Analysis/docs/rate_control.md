@@ -33,6 +33,8 @@ Simplified to
 $$
 T_i \approx k_{thrust} \cdot \omega^2
 $$
+
+
 where $\omega$ is the angular speed in $rad/s$
 
 A hover state is when the **net** total forces and moments are zeros
@@ -111,19 +113,24 @@ Assuming a rectangular cuboid frame:
 $$
 J_{xx} (body) = \frac{1}{12} \times m_b  W_{body}^2= \mathbf{1.33 \times 10^{-4} kg.m^2}
 $$
+
 $$
 J_{yy} (body) = \frac{1}{12} \times m_b L_{body}^2= \mathbf{5.33 \times 10^{-4} kg.m^2}
 $$
+
 $$
 J_{xx} (motor) = 4 \times m_m L_y^2 = 4 \times 0.035 \times (0.09 m)^2= 
 \mathbf{1.134 \times 10^{-3} kg.m^{2}}
 $$
+
 $$
 J_{yy} (motor) = 4 \times m_m L_x^2 = 4 \times 0.035 \times (0.07 m)^2= \mathbf{6.860 \times 10^{-4} kg.m^{2}}
 $$
+
 $$
 J_{xx} =  J_{xx} (body) + J_{xx}(motor) = \mathbf{1.2673 \times 10^{-3} kg.m^{2}}
 $$
+
 $$
 J_{yy} = J_{yy} (body) + J_{yy}(motor) = \mathbf{1.2193 \times 10^{-3} kg.m^{2}}
 $$
@@ -135,6 +142,7 @@ Recall
 $$
 	au = J\dot{\omega} + \omega \times J\omega \approx J\dot{\omega}
 $$
+
 where $\tau$ is the net external torque
 
 Note, tha the gyroscopic effects from the body rotated frame with respect to inertial frame are generally negligible in time scale of controller transient responses 
@@ -153,7 +161,9 @@ J_{xx} & 0 & 0\\
 0 & 0 & J_{xx}+J_{yy} 
 \end{matrix}\right]
 $$
+
 or 
+
 $$
 \left[\begin{matrix}
 \dot{p} \\ 
@@ -175,9 +185,11 @@ $$
 **The pitch rate $q$:**
 
 For pitch moment :
+
 $$
 \dot{q}=\frac{L_{x}}{J_{yy}} \Sigma F_i
 $$
+
 $$
 \dot{q}=\frac{L_{x}\cdot k_{thrust}}{J_{yy}}(\omega _{1}^{2}+\omega _{2}^{2}-\omega _{3}^{2}-\omega _{4}^{2})
 $$
@@ -185,6 +197,7 @@ $$
 **The roll $p$ :**
 
 For the roll moment
+
 $$
 \dot{p}=\frac{L_{x}}{J_{xx}} \Sigma F_i
 $$
@@ -195,6 +208,8 @@ $$
 
 
 Note that $\omega_i$ is in $\text{ rad/s}$ and cane be easily expressed in $\mathbf{RPM}$ 
+
+
 $$\omega\,[\mathrm{rad/s}] = \mathrm{RPM}\,\frac{2\pi}{60}$$
 
 
@@ -202,14 +217,17 @@ $$\omega\,[\mathrm{rad/s}] = \mathrm{RPM}\,\frac{2\pi}{60}$$
 # 3-Linearization of the MISO models
 
 The motor thrust which creates a lifting force during hover, is a nonlinear function of its velocity as mentioned before
+
 $$
 F(\omega) = k_{\text{thrust}}\omega^2
 $$
 
 Aroud hover point, the linearized function is obtained from the first-order tylor series (truncating pther terms): 
+
 $$
 F(\omega )\approx F(\omega _{0})+\left.\frac{\partial F}{\partial \omega }\right|_{\omega _{0}}(\omega -\omega _{0})
 $$
+
 Where $\omega _{0}$ ($rad/s$) is the hover angular speed of the motor,
 Calculating the derivative with respect to $\omega$:
  
@@ -218,11 +236,13 @@ $$
 $$
 
 So:
+
 $$
 F_{i}\approx k_{\text{thrust}}\omega _{0}^{2}+2k_{\text{thrust}}\omega _{0}u_{i}
 $$
 
 Note that the control input $u_i$ is the motor's angular speed deviation from the hover angular speed
+
 $$
 u_{i}=\Delta \omega _{i}=\omega _{i}-\omega _{0}
 $$
@@ -294,14 +314,18 @@ Finally the plant SISO transfer functions are:
 $$
 G_{q} = \frac{Q(s)}{U_{q}(s)}G_{motor}=\frac{\eta_{q}}{s(T_{motor}s+1)}
 $$
+
 $$
 G_{p} = \frac{P(s)}{U_{p}(s)}G_{motor}=\frac{\eta_{p}}{s(T_{motor}s+1)}
 $$
 
 where 
+
 $$\eta_{q} = \frac{2\cdot L_{x}\cdot k_{thrust}\cdot \omega _{0}}{J_{yy}}
 $$
+
 and
+
 $$
 \eta_{p} = \frac{2\cdot L_{y}\cdot k_{thrust}\cdot \omega _{0}}{J_{xx}}
 $$
@@ -376,7 +400,9 @@ The structure of the phase lead compensator is :
 $$
 C(s) = K_c\frac{ s + z }{s + p }
 $$
+
 The open-loop transfer function
+
 $$
 L(s) = C(s) G(s)
 $$
@@ -431,9 +457,11 @@ Gain and phase margin measure instability along specific axes or angles. The vec
 So, designing with a vector margin that aims keeping the loop transfer function $L(j\omega)$ away from the critical point $(-1 + j0)$.
 
 The vector margin is the inverse of the supremum (maximum peak) of the sensitivity transfer function.
+
 $$
 VM=\min_{\omega}\left|1+L(j\omega)\right|=\frac{1}{\max_{\omega}\left|S(j\omega)\right|}=\frac{1}{M_s}
 $$
+
 Designing for a good vector margin is identical to minimizing the maximum peak of the sensitivity function $M_{s}$. A vector margin in the range of $\left[0.5, 0.7\right]$ (which corresponds to an $M_{s}$ of $\left[1.4, 2.0\right]$ is a robust range of values.
 
 
