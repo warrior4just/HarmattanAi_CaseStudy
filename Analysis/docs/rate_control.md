@@ -35,7 +35,7 @@ T_i \approx k_{thrust} \cdot \omega^2
 $$
 
 
-where $\omega$ is the angular speed in $rad/s$
+where $\omega$ is the angular speed in rad/s
 
 A hover state is when the **net** total forces and moments are zeros
 
@@ -225,26 +225,27 @@ $$
 Aroud hover point, the linearized function is obtained from the first-order tylor series (truncating pther terms): 
 
 $$
-F(\omega )\approx F(\omega _{0})+\left.\frac{\partial F}{\partial \omega }\right|_{\omega _{0}}(\omega -\omega _{0})
+F(\omega )\approx F(\omega_0)+\left.\frac{\partial F}{\partial \omega }\right|_{\omega_0}(\omega -\omega_0)
 $$
 
-Where $\omega _{0}$ ($rad/s$) is the hover angular speed of the motor,
+Where $\omega_0$ (rad/s) is the hover angular speed of the motor.
+
 Calculating the derivative with respect to $\omega$:
  
 $$
-\frac{\partial F}{\partial \omega }=2k_{\text{thrust}}\omega \implies \left.\frac{\partial F}{\partial \omega }\right|_{\omega _{0}}=2k_{\text{thrust}}\omega _{0}
+\frac{\partial F}{\partial \omega }=2k_{\text{thrust}}\omega \implies \left.\frac{\partial F}{\partial \omega }\right|_{\omega_0}=2k_{\text{thrust}}\omega_0
 $$
 
 So:
 
 $$
-F_{i}\approx k_{\text{thrust}}\omega _{0}^{2}+2k_{\text{thrust}}\omega _{0}u_{i}
+F_{i}\approx k_{\text{thrust}}\omega_0^{2}+2k_{\text{thrust}}\omega_0 u_{i}
 $$
 
 Note that the control input $u_i$ is the motor's angular speed deviation from the hover angular speed
 
 $$
-u_{i}=\Delta \omega _{i}=\omega _{i}-\omega _{0}
+u_{i}=\Delta \omega _{i}=\omega _{i}-\omega_0
 $$
 
 Substituting in the above pitch ODE equation and eliminating the repeated steady-state terms of $k_{\text{thrust}}\omega_0^2$
@@ -252,13 +253,13 @@ Substituting in the above pitch ODE equation and eliminating the repeated steady
 The input linearized pitch equation becomes:
 
 $$
-\dot{q}=\left[\frac{2\cdot L_{x}\cdot k_{\text{thrust}}\cdot \omega _{0}}{J_{yy}}\right](u_{1}+u_{2}-u_{3}-u_{4})
+\dot{q}=\left[\frac{2\cdot L_{x}\cdot k_{\text{thrust}}\cdot \omega_0}{J_{yy}}\right](u_{1}+u_{2}-u_{3}-u_{4})
 $$
 
 Similarly, the linearized roll equation becomes:
 
 $$
-\dot{p}=\left[\frac{2\cdot L_{y}\cdot k_{\text{rad}}\cdot \omega _{0}}{J_{xx}}\right](u_{1}-u_{2}-u_{3}+u_{4})
+\dot{p}=\left[\frac{2\cdot L_{y}\cdot k_{\text{rad}}\cdot \omega_0}{J_{xx}}\right](u_{1}-u_{2}-u_{3}+u_{4})
 $$
 
 ---
@@ -336,7 +337,7 @@ This is the post controller stage entering the actuation (motors) which maps the
 
 
 $$
-\left[\begin{matrix}u_{1}\\ u_{2}\\ u_{3}\\ u_{4}\end{matrix}\right]=\left[\begin{matrix}1&1\\ -1&1\\ -1&-1\\ 1&-1\end{matrix}\right]\left[\begin{matrix}\delta _{p}\\ \delta _{q}\end{matrix}\right]
+\left[\begin{matrix}u_{1}\\ u_{2}\\ u_{3}\\ u_{4}\end{matrix}\right]=\left[\begin{matrix} 1 & 1 \\ -1 & 1 \\ -1 & -1 \\ 1 &-1 \end{matrix}\right]\left[\begin{matrix}\delta _{p}\\ \delta _{q}\end{matrix}\right]
 $$
 
 
