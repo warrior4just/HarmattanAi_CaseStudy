@@ -340,7 +340,23 @@ This is the post controller stage entering the actuation (motors) which maps the
 
 
 $$
-\left[\begin{matrix} u_1 \\ u_2 \\ u_2 \\ u_4 \end{matrix}\right] = \left[\begin{matrix} 1 & 1\\ -1 & 1\\ -1 & -1\\ 1 & -1\end{matrix}\right] \left[\begin{matrix}\delta_p \\ \delta_q\end{matrix}\right]
+\begin{bmatrix}
+u_1 \\
+u_2 \\
+u_3 \\
+u_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 1 \\
+-1 & 1 \\
+-1 & -1 \\
+1 & -1
+\end{bmatrix}
+\begin{bmatrix}
+\delta_p \\
+\delta_q
+\end{bmatrix}
 $$
 
 
