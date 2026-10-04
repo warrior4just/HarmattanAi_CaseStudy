@@ -254,13 +254,13 @@ Substituting in the above pitch ODE equation and eliminating the repeated steady
 The input linearized pitch equation becomes:
 
 $$
-\dot{q}=\left[\frac{2\cdot L_{x}\cdot k_{thrust}\cdot \omega_0}{J_{yy}}\right](u_{1}+u_{2}-u_{3}-u_{4})
+\dot{q}=\left[\frac{2 \cdot L_{x} \cdot k_{thrust} \cdot \omega_0}{J_{yy}} \right] (u_{1}+u_{2}-u_{3}-u_{4})
 $$
 
 Similarly, the linearized roll equation becomes:
 
 $$
-\dot{p}=\left[\frac{2\cdot L_{y}\cdot k_{thrust}\cdot \omega_0}{J_{xx}}\right](u_{1}-u_{2}-u_{3}+u_{4})
+\dot{p}=\left[\frac{2 \cdot L_{y}\cdot k_{thrust} \cdot \omega_0}{J_{xx}} \right] (u_{1}-u_{2}-u_{3}+u_{4})
 $$
 
 ---
