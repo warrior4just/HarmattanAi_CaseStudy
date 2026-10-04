@@ -24,7 +24,7 @@ Each script models one axis body-expressed rotational rate as a SISO loop with m
 The thrust per each motor is :
 
 $$
-T_{i}=C_{T} \cdot \rho.\cdot n^{2} \cdot D^{4}
+T_{i}=C_{T} \cdot \rho \cdot n^{2} \cdot D^{4}
 $$
 Simplified to 
 $$
@@ -35,8 +35,10 @@ where $\omega$ is the angular speed in $rad/s$
 A hover state is when the **net** total forces and moments are zeros
 
 $$
-\sum_i F_i = 0 \\
-\sum_i M_i = 0
+\begin{aligned}
+\sum_i F_i &= 0 \\
+\sum_i M_i &= 0
+\end{aligned}
 $$
 
 The thrust per motor required to balance the weight is:
@@ -84,15 +86,19 @@ where $k_{thrust}$ is the thrust coefficient.
 Provided that : 
 
 $$
-L_x = 0.07 m\\
-L_y = 0.09 m
+\begin{aligned}
+L_x &= 0.07\,\mathrm{m} \\
+L_y &= 0.09\,\mathrm{m}
+\end{aligned}
 $$ 
 
 where $L_x$ and $L_y$ is the moment arm length of the fuselage/frame in body's x and y axes direction, respectively
 
 $$
-L_{body} = 0.08  m \\
-W_{body} = 0.04  m
+\begin{aligned}
+L_{body} &= 0.08\,\mathrm{m} \\
+W_{body} &= 0.04\,\mathrm{m}
+\end{aligned}
 $$ 
 Where $L$ and $W$ are half of the length (assumed) and width of fuselage/frame, respectively.
 
@@ -124,7 +130,7 @@ Establishing the properties associated with mass and moment of inertia. Now we s
 Recall
 
 $$
-\tau = J\dot{\omega} + \omega \times J\omega \approx J\dot \omega \\
+	au = J\dot{\omega} + \omega \times J\omega \approx J\dot{\omega}
 $$
 where $\tau$ is the net external torque
 
