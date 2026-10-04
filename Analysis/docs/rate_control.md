@@ -26,7 +26,10 @@ The thrust per each motor is :
 $$
 T_{i}=C_{T} \cdot \rho \cdot n^{2} \cdot D^{4}
 $$
+
+
 Simplified to 
+
 $$
 T_i \approx k_{thrust} \cdot \omega^2
 $$
@@ -173,7 +176,7 @@ $$
 
 For pitch moment :
 $$
-\dot{q}=\frac{L_{x}}{J_{yy}} .\Sigma F_i
+\dot{q}=\frac{L_{x}}{J_{yy}} \Sigma F_i
 $$
 $$
 \dot{q}=\frac{L_{x}\cdot k_{thrust}}{J_{yy}}(\omega _{1}^{2}+\omega _{2}^{2}-\omega _{3}^{2}-\omega _{4}^{2})
@@ -183,7 +186,7 @@ $$
 
 For the roll moment
 $$
-\dot{p}=\frac{L_{x}}{J_{xx}} .\Sigma F_i
+\dot{p}=\frac{L_{x}}{J_{xx}} \Sigma F_i
 $$
 
 $$
@@ -296,11 +299,11 @@ G_{p} = \frac{P(s)}{U_{p}(s)}G_{motor}=\frac{\eta_{p}}{s(T_{motor}s+1)}
 $$
 
 where 
-$$\eta_{q} = \frac{2\cdot L_{x}\cdot k_{\text{thrust}}\cdot \omega _{0}}{J_{yy}}
+$$\eta_{q} = \frac{2\cdot L_{x}\cdot k_{thrust}\cdot \omega _{0}}{J_{yy}}
 $$
 and
 $$
-\eta_{p} = \frac{2\cdot L_{y}\cdot k_{\text{rad}}\cdot \omega _{0}}{J_{xx}}
+\eta_{p} = \frac{2\cdot L_{y}\cdot k_{thrust}\cdot \omega _{0}}{J_{xx}}
 $$
 
 **The mixer matrix:**
@@ -439,18 +442,21 @@ Robust control methods (e.g. $H_{\infty}$ sensitivity based loop-shaping) with m
 Another way of designing for robutness is for reformulating the problem as an optimal controler (e.g. LQG) or direct PID Tuning via constrained optimization instead of heuristic approaches (e.g. Ziegler-Nichos). The constrained optimization of PID gains would aim in its objective cost function to maximize tracking performance (like minimizing Integrated Absolute Error), subject to a strict non-linear constraint:
 
 $$
-M_s=\max_{\omega}\left|S(j\omega)\right|\le 1.6
+M_s=\max_{\omega} \left|S(j\omega)\right| \le 1.6
 $$
+
+
 With $S(j\omega )$ being the sensitivity function.
 
 This provide specific guarantees that your PID controller achieves the fastest possible response time with the target vector margin in mind. 
 
-There is a fundamental tradeoff backed in the following identity condition. 
+There is a fundamental tradeoff baked in the following identity condition. 
 
 $$
-S(j\omega)+T(j\omega)=1
+S(j\omega) + T(j\omega)=1
 $$
-$T(j\omega)$ is the closed-loop transfer function.
+
+Where $T(j\omega)$ is the closed-loop transfer function.
 
 At low frequencies, where good tracking should be achieved, $L(j\omega)$ needs be large. This makes $S(j\omega) \approx 0$ (good disturbance rejection) and $T(j\omega) \approx 1$ (idea setpoint tracking). 
 
