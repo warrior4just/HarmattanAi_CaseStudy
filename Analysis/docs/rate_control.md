@@ -105,6 +105,8 @@ L_{body} &= 0.08\,\mathrm{m} \\
 W_{body} &= 0.04\,\mathrm{m}
 \end{aligned}
 $$ 
+
+
 Where $L$ and $W$ are half of the length (assumed) and width of fuselage/frame, respectively.
 
 
@@ -254,13 +256,13 @@ Substituting in the above pitch ODE equation and eliminating the repeated steady
 The input linearized pitch equation becomes:
 
 $$
-\dot{q}=\left[\frac{2 \cdot L_{x} \cdot k_{thrust} \cdot \omega_0}{J_{yy}} \right] (u_{1}+u_{2}-u_{3}-u_{4})
+\dot{q}=\left[\frac{2  L_{x}  k_{thrust}  \omega_0}{J_{yy}} \right] (u_{1}+u_{2}-u_{3}-u_{4})
 $$
 
 Similarly, the linearized roll equation becomes:
 
 $$
-\dot{p}=\left[\frac{2 \cdot L_{y}\cdot k_{thrust} \cdot \omega_0}{J_{xx}} \right] (u_{1}-u_{2}-u_{3}+u_{4})
+\dot{p}=\left[\frac{2 L_{y} k_{thrust}  \omega_0}{J_{xx}} \right] (u_{1}-u_{2}-u_{3}+u_{4})
 $$
 
 ---
@@ -338,7 +340,7 @@ This is the post controller stage entering the actuation (motors) which maps the
 
 
 $$
-\left[\begin{matrix}u_{1}\\ u_{2}\\ u_{3}\\ u_{4}\end{matrix}\right]=\left[\begin{matrix} 1 & 1 \\ -1 & 1 \\ -1 & -1 \\ 1 &-1 \end{matrix}\right]\left[\begin{matrix}\delta _{p}\\ \delta _{q}\end{matrix}\right]
+\left[\begin{matrix}u_{1}\\ u_{2}\\ u_{3}\\ u_{4}\end{matrix}\right]=\left[\begin{matrix} 1 & 1 \\ -1 & 1 \\ -1 & -1 \\ 1 & -1 \end{matrix}\right]\left[\begin{matrix}\delta_p \\ \delta_q\end{matrix}\right]
 $$
 
 
