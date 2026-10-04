@@ -24,34 +24,35 @@ Each script models one axis body-expressed rotational rate as a SISO loop with m
 The thrust per each motor is :
 
 $$
-T_{i}=C_{T}\cdot \rho \cdot n^{2}\cdot D^{4}
+T_{i}=C_{T} \cdot \rho.\cdot n^{2} \cdot D^{4}
 $$
 Simplified to 
 $$
-T_i \approx k_{thrust} \times \omega^2
+T_i \approx k_{thrust} \cdot \omega^2
 $$
-where $\omega$ is the angular speed in $\text{ rad/s}$
+where $\omega$ is the angular speed in $rad/s$
 
 A hover state is when the **net** total forces and moments are zeros
 
 $$
-\Sigma F_i = 0 \\
-\Sigma M_i = 0
+\sum_i F_i = 0 \\
+\sum_i M_i = 0
 $$
 
 The thrust per motor required to balance the weight is:
 
 $$
-T_{motor} = \frac{m \times g}{4}
+T_{motor} = \frac{m.g}{4}
 $$
 
 
-For a total mass of $1.14 \text{ Kg}$, the thrust per motor required is $2.795 \text{ N}$
+For a total mass of $1.14 Kg$, the thrust per motor required is $2.795 N$
 
-From the figure 3-1, the RPM corresponding to required thrust per motor is $ \mathbf{14250 \text{ RPM}}$
+From the figure 3-1, the RPM corresponding to required thrust per motor is $ \mathbf{14250 RPM}$
 
 
 ![Thrust (N) vs RPM](../pics/Thrust_vs_RPM_sp_meas.png)
+
 *Figure 1-1: Thrust (N) vs RPM*
 
 ---
@@ -75,7 +76,7 @@ The roll motion occurs when there is a differential between the thrust of $(F_1 
 We assume proportional relationship between the motor thrust and angular speed of the motor :
 
 $$
-T_i = k_{thrust} \times \omega^2
+T_i = k_{thrust} \cdot \omega^2
 $$
 
 where $k_{thrust}$ is the thrust coefficient.
@@ -83,15 +84,15 @@ where $k_{thrust}$ is the thrust coefficient.
 Provided that : 
 
 $$
-L_x = 0.07 \text{ m} \\
-L_y = 0.09 \text{ m}
+L_x = 0.07 m\\
+L_y = 0.09 m
 $$ 
 
 where $L_x$ and $L_y$ is the moment arm length of the fuselage/frame in body's x and y axes direction, respectively
 
 $$
-L_{body} = 0.08 \text{ m} \\
-W_{body} = 0.04 \text{ m}
+L_{body} = 0.08  m \\
+W_{body} = 0.04  m
 $$ 
 Where $L$ and $W$ are half of the length (assumed) and width of fuselage/frame, respectively.
 
@@ -106,16 +107,16 @@ J_{yy} (body) = \frac{1}{12} \times m_b L_{body}^2= \mathbf{5.33 \times 10^{-4} 
 $$
 $$
 J_{xx} (motor) = 4 \times m_m L_y^2 = 4 \times 0.035 \times (0.09 m)^2= 
-\mathbf{1.134 \times 10^{-3} \text{\ kg}{\cdot}\text{m}^{2}}
+\mathbf{1.134 \times 10^{-3} kg.m^{2}}
 $$
 $$
-J_{yy} (motor) = 4 \times m_m L_x^2 = 4 \times 0.035 \times (0.07 m)^2= \mathbf{6.860 \times 10^{-4} \text{\ kg}{\cdot}\text{m}^{2}}
+J_{yy} (motor) = 4 \times m_m L_x^2 = 4 \times 0.035 \times (0.07 m)^2= \mathbf{6.860 \times 10^{-4} kg.m^{2}}
 $$
 $$
-J_{xx} =  J_{xx} (body) + J_{xx}(motor) = \mathbf{1.2673 \times 10^{-3} \text{\ kg}{\cdot}\text{m}^{2}}
+J_{xx} =  J_{xx} (body) + J_{xx}(motor) = \mathbf{1.2673 \times 10^{-3} kg.m^{2}}
 $$
 $$
-J_{yy} = J_{yy} (body) + J_{yy}(motor) = \mathbf{1.2193 \times 10^{-3} \text{\ kg}{\cdot}\text{m}^{2}}
+J_{yy} = J_{yy} (body) + J_{yy}(motor) = \mathbf{1.2193 \times 10^{-3} kg.m^{2}}
 $$
 
 Establishing the properties associated with mass and moment of inertia. Now we shift to deriving the transfer function of the plants
@@ -185,7 +186,7 @@ $$
 
 
 Note that $\omega_i$ is in $\text{ rad/s}$ and cane be easily expressed in $\mathbf{RPM}$ 
-$$ \text{ rad/s} = \times (\frac{2\pi}{60}) \mathbf{RPM} $$.
+$$\omega\,[\mathrm{rad/s}] = \mathrm{RPM}\,\frac{2\pi}{60}$$
 
 
 ---
@@ -198,13 +199,13 @@ $$
 
 Aroud hover point, the linearized function is obtained from the first-order tylor series (truncating pther terms): 
 $$
-F(\omega )\approx F(\omega _{0})+\left.\frac{\partial F}{\partial \omega }\right|{}_{\omega _{0}}(\omega -\omega _{0})
+F(\omega )\approx F(\omega _{0})+\left.\frac{\partial F}{\partial \omega }\right|_{\omega _{0}}(\omega -\omega _{0})
 $$
 Where $\omega _{0}$ ($rad/s$) is the hover angular speed of the motor,
 Calculating the derivative with respect to $\omega$:
  
 $$
-\frac{\partial F}{\partial \omega }=2k_{\text{thrust}}\omega \implies \left.\frac{\partial F}{\partial \omega }\right|{}_{\omega _{0}}=2k_{\text{thrust}}\omega _{0}
+\frac{\partial F}{\partial \omega }=2k_{\text{thrust}}\omega \implies \left.\frac{\partial F}{\partial \omega }\right|_{\omega _{0}}=2k_{\text{thrust}}\omega _{0}
 $$
 
 So:
@@ -335,28 +336,28 @@ There are two poles :  **$(-20.0, 0.j)$** and at the origin **$(0.0 + 0.0j)$**
 
 **Gain Margin (GM):**     inf (or inf dB) at nan rad/s
 
-**Phase Margin (PM):**    $89.24°$ at $0.27 \text{ rad/s}$
+**Phase Margin (PM):**    $89.24°$ at $0.27 rad/s$
 
-While the gain margin theoretically is infinity in the continuous-time case implying that the sytem remains stable in terms of gain as it never crosses the $-180 \text{ deg}$ line, once we discretize the system, the potential for infinite gain disappears and becomes a finite number.
+While the gain margin theoretically is infinity in the continuous-time case implying that the sytem remains stable in terms of gain as it never crosses the $-180 deg$ line, once we discretize the system, the potential for infinite gain disappears and becomes a finite number.
 
 
 
 ---
 # 6- Design a regulator for both rate transfer functions
 
-We can infer some requirements from the "motor.csv" eventhough no time stamps are provided for the RMP setpoints and responses signals. We assume a sampling frequency of $1 \text { kHz}$. 
+We can infer some requirements from the "motor.csv" eventhough no time stamps are provided for the RMP setpoints and responses signals. We assume a sampling frequency of $1 kHz$. 
 
-The rise time and settling time are 80 and 220 ticks respectively, so assuming a sample time of $dt = 1 \text{ ms}$:
+The rise time and settling time are 80 and 220 ticks respectively, so assuming a sample time of $dt = 1 ms$:
 
 
 | Requirement | Value | 
 | --- | ---|
-|$t_{rise}$  | $ 80 \text{ ms}$ |
-|$t_{settling}$ | $ 220 \text{ ms}$ |
+|$t_{rise}$  | $80\,\mathrm{ms}$ |
+|$t_{settling}$ | $220\,\mathrm{ms}$ |
 |$Overshoot$ |  $< 5\%$ |
-$t_{delay}$ | $1 \text{ ms}$ |
+|$t_{delay}$ | $1\,\mathrm{ms}$ |
 |$PM$ | $> 60^\circ$ |
-|$GM$ | $> 6 \text{ dB}$ |
+|$GM$ | $> 6 dB$ |
 
 Control transfer function was designed using phase Lead compensator, which is suitable for damping the type-1 (one integrator term) second order system. Discretization of the lead compensator and transforming it to a PID structure would add an integrator action (See [pitch_compensator.py](../RateControl/pitch_compensator.py) and [roll_compensator.py](../RateControl/roll_compensator.py) for implementation).  
 
@@ -374,22 +375,24 @@ $$
 
 | Transfer function| Pitch-Rate | Roll-rate |
 | --- | --- | --- |
-| $C(s)$ |  $ 621.376\cdot \frac{s+17.585}{s+67.197} $ | $ 767.539\cdot \frac{s+19.100}{s+89.110} $ |
+| $C(s)$ |  $ 621.376 \frac{s+17.585}{s+67.197} $ | $ 767.539 \frac{s+19.100}{s+89.110} $ |
 | $L(s)$ | $\mathbf{\frac{ 2350 s + 4.134 \times 10^4}{0.8797 s^3 + 76.68 s^2 + 1182 s}} $ | $\mathbf{ \frac{ 3900 s + 7.448 \times 10^4}{0.9549 s^3 + 104.2 s^2 + 1702 s} }$ |
 
 
 
 ### Frequency Responses: 
 
-The primary frequency response change afforded by the lead compensator is a significant upward shift of the entire magnitude curve. The magnitude at 1 rad/s has been raised from roughly $-10 dB$ to more $+25 dB$ for both transfer functions. This implies the Pitch-rate compensator introduced a high proportional gain $K_{p}$ to improve tracking and eliminate steady-state error. With this added gain, the gain crossover frequency is at $\omega _{c}$ of $34.38 \text{ rad/s}$ (marked by the vertical dotted line). At this frequency a Phase Margin of 65.98° is observed and it's compliant with the design requirement. On the other hand the Gain Margin $G_{m}$ remains infinte since thephase asymptotically approaches but never rosses $-180°$. 
+The primary frequency response change afforded by the lead compensator is a significant upward shift of the entire magnitude curve. The magnitude at 1 rad/s has been raised from roughly $-10 dB$ to more $+25 dB$ for both transfer functions. This implies the Pitch-rate compensator introduced a high proportional gain $K_{p}$ to improve tracking and eliminate steady-state error. With this added gain, the gain crossover frequency is at $\omega_c$ of $34.38 rad/s$ (marked by the vertical dotted line). At this frequency a Phase Margin of 65.98° is observed and it's compliant with the design requirement. On the other hand the Gain Margin $G_m$ remains infinte since thephase asymptotically approaches but never rosses $-180°$. 
 
 ![Pitch-rate Compensated Open-Loop Bode Plot](../pics/compensatedPitchRateBodePlot.png)
+
 *Figure 1-4: Bode plot of compensated Open-loop for pitch rate*
 
 
-In the roll-rate compensator the Gain Margin remained at $\infty$ while the Phase Margin is $66.18^{\circ}$ at $41.25 \text{ rad/s}$
+In the roll-rate compensator the Gain Margin remained at $\infty$ while the Phase Margin is $66.18^{\circ}$ at $41.25\,\mathrm{rad/s}$.
 
 ![Roll-rate Compensated Open-Loop Bode Plot](../pics/compensatedRollRateBodePlot.png)
+
 *Figure 1-5: Bode plot of compensated Open-loop for roll rate*
 
 
@@ -399,11 +402,13 @@ In the roll-rate compensator the Gain Margin remained at $\infty$ while the Phas
 From **Figure 1-6** we see that the rise time is just at $50.8 ms$ which is within the target rise time of $80 ms$. It is expected from type-1 system not to have steady-state error from a step response, nonetheless it is maintained with this implemented lead compensator. On the other hand, the velocity error from ramp input is 0.0286 rad/s and remains constant. 
 
 ![Pitch-rate transient response to step, impulsve, and ramp input](../pics/InputsPitchRateResponse.png)
+
 *Figure 1-6: Step, impulse, and ramp input responses for pitch-rate closed-loop system*
 
 Similarly, from **Figure 1-7**, the rise time is just at 42.0 ms which is within the target rise time. Reference tracking via steady state error performs as required and the velocity error from ramp input is 0.0228 rad/s and remains constant. 
 
 ![Roll-ratetransient response to step, impulsve, and ramp input](../pics/InputsRollRateResponse.png)
+
 *Figure 1-7: Step, impulse, and ramp input responses for roll-rate closed-loop system*
 
 
@@ -418,7 +423,7 @@ So, designing with a vector margin that aims keeping the loop transfer function 
 
 The vector margin is the inverse of the supremum (maximum peak) of the sensitivity transfer function.
 $$
-VM=\min _{\omega }|{}1+L(j\omega )|{}=\frac{1}{\max _{\omega }|{}S(j\omega )|{}}=\frac{1}{M_{s}}
+VM=\min_{\omega}\left|1+L(j\omega)\right|=\frac{1}{\max_{\omega}\left|S(j\omega)\right|}=\frac{1}{M_s}
 $$
 Designing for a good vector margin is identical to minimizing the maximum peak of the sensitivity function $M_{s}$. A vector margin in the range of $\left[0.5, 0.7\right]$ (which corresponds to an $M_{s}$ of $\left[1.4, 2.0\right]$ is a robust range of values.
 
@@ -426,13 +431,16 @@ Designing for a good vector margin is identical to minimizing the maximum peak o
 Robust control methods (e.g. $H_{\infty}$ sensitivity based loop-shaping) with model-order reduction guaranteens robustness, but these methods are overkill for stability augmentation or angular rate compensation for drones, unless stability guarantees on extreme maneuvering is a requirement.
 
 Another way of designing for robutness is for reformulating the problem as an optimal controler (e.g. LQG) or direct PID Tuning via constrained optimization instead of heuristic approaches (e.g. Ziegler-Nichos). The constrained optimization of PID gains would aim in its objective cost function to maximize tracking performance (like minimizing Integrated Absolute Error), subject to a strict non-linear constraint:
+
 $$
-M_{s}=\max _{\omega }|{}S(j\omega )|{}\le 1.6
+M_s=\max_{\omega}\left|S(j\omega)\right|\le 1.6
 $$
 With $S(j\omega )$ being the sensitivity function.
+
 This provide specific guarantees that your PID controller achieves the fastest possible response time with the target vector margin in mind. 
 
 There is a fundamental tradeoff backed in the following identity condition. 
+
 $$
 S(j\omega)+T(j\omega)=1
 $$
