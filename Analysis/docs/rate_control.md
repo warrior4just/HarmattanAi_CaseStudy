@@ -231,15 +231,16 @@ $$
 Where $\omega_0$ (rad/s) is the hover angular speed of the motor.
 
 Calculating the derivative with respect to $\omega$:
- 
+
+
 $$
-\frac{\partial F}{\partial \omega }=2k_{\text{thrust}}\omega \implies \left.\frac{\partial F}{\partial \omega }\right|_{\omega_0}=2k_{\text{thrust}}\omega_0
+\frac{\partial F}{\partial \omega }=2k_{thrust}\omega \implies \left.\frac{\partial F}{\partial \omega}\right|_{\omega_0}=2k_{thrust}\omega_0
 $$
 
 So:
 
 $$
-F_{i}\approx k_{\text{thrust}}\omega_0^{2}+2k_{\text{thrust}}\omega_0 u_{i}
+F_{i}\approx k_{thrust}\omega_0^{2}+2k_{thrust}\omega_0 u_{i}
 $$
 
 Note that the control input $u_i$ is the motor's angular speed deviation from the hover angular speed
@@ -248,18 +249,18 @@ $$
 u_{i}=\Delta \omega _{i}=\omega _{i}-\omega_0
 $$
 
-Substituting in the above pitch ODE equation and eliminating the repeated steady-state terms of $k_{\text{thrust}}\omega_0^2$
+Substituting in the above pitch ODE equation and eliminating the repeated steady-state terms of $k_{thrust}\omega_0^2$
 
 The input linearized pitch equation becomes:
 
 $$
-\dot{q}=\left[\frac{2\cdot L_{x}\cdot k_{\text{thrust}}\cdot \omega_0}{J_{yy}}\right](u_{1}+u_{2}-u_{3}-u_{4})
+\dot{q}=\left[\frac{2\cdot L_{x}\cdot k_{thrust}\cdot \omega_0}{J_{yy}}\right](u_{1}+u_{2}-u_{3}-u_{4})
 $$
 
 Similarly, the linearized roll equation becomes:
 
 $$
-\dot{p}=\left[\frac{2\cdot L_{y}\cdot k_{\text{rad}}\cdot \omega_0}{J_{xx}}\right](u_{1}-u_{2}-u_{3}+u_{4})
+\dot{p}=\left[\frac{2\cdot L_{y}\cdot k_{thrust}\cdot \omega_0}{J_{xx}}\right](u_{1}-u_{2}-u_{3}+u_{4})
 $$
 
 ---
@@ -269,20 +270,20 @@ To make multiple inputs to motors become a single input, we place a mixer stage 
 
 ### **Actuator Allocation:**
 
-Mixed Pitch-rate Input $\delta _{q}$:
+Mixed Pitch-rate Input $\delta_q$:
  
 For positive pitch angle : commands the front motors to throttle up, rear motors to throttle down.
 
 $$
-\delta _{q}=u_{1}+u_{2}-u_{3}-u_{4}
+\delta_q=u_{1}+u_{2}-u_{3}-u_{4}
 $$
 
-Mixed Roll-rate Input $\delta _{p}$:
+Mixed Roll-rate Input $\delta_p$:
 
 For positive roll angle: commands the left motors to throttle up, right motors to throttle down. 
 
 $$
-\delta _{p}=u_{1}-u_{2}-u_{3}+u_{4}
+\delta_p=u_{1}-u_{2}-u_{3}+u_{4}
 $$
 
 
@@ -291,7 +292,7 @@ $$
 Lumping the cosntant values into $\eta_{pitch}$ and $\eta_{roll}$ and taking the laplace transform directly, we obtain
 
 $$
-\frac{Q(s)}{U_{q}(s)} = \frac{\eta_{q}}{s}
+\frac{Q(s)}{U_{q}(s)} = \frac{\eta_q}{s}
 $$
 
 
@@ -299,7 +300,7 @@ $$
 
 
 $$
-\frac{P(s)}{U_{p}(s)} = \frac{\eta_{p}}{s}
+\frac{P(s)}{U_{p}(s)} = \frac{\eta_p}{s}
 $$
 
 The system plant is not only the vehicle dynamics but also the motor dynamic response, the lumped motor dynamic response can be reduced to a first-order transfer function form
@@ -313,22 +314,22 @@ Where $T_{motor}$ is the motor time constant, taken to be $T_{motor}$ is $20 \te
 Finally the plant SISO transfer functions are:
 
 $$
-G_{q} = \frac{Q(s)}{U_{q}(s)}G_{motor}=\frac{\eta_{q}}{s(T_{motor}s+1)}
+G_q = \frac{Q(s)}{U_q(s)}G_{motor}=\frac{\eta_q}{s(T_{motor}s+1)}
 $$
 
 $$
-G_{p} = \frac{P(s)}{U_{p}(s)}G_{motor}=\frac{\eta_{p}}{s(T_{motor}s+1)}
+G_p = \frac{P(s)}{U_p(s)}G_{motor}=\frac{\eta_p}{s(T_{motor}s+1)}
 $$
 
 where 
 
-$$\eta_{q} = \frac{2\cdot L_{x}\cdot k_{thrust}\cdot \omega _{0}}{J_{yy}}
+$$\eta_q = \frac{2\cdot L_{x}\cdot k_{thrust}\cdot \omega_0}{J_{yy}}
 $$
 
 and
 
 $$
-\eta_{p} = \frac{2\cdot L_{y}\cdot k_{thrust}\cdot \omega _{0}}{J_{xx}}
+\eta_p = \frac{2\cdot L_{y}\cdot k_{thrust}\cdot \omega_0}{J_{xx}}
 $$
 
 **The mixer matrix:**
