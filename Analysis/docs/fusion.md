@@ -33,7 +33,12 @@ The file provides 9,073 samples spanning about 65.28 seconds. We convert the tim
 The nominal state consists of the scalar-first quaternion $q=[q_w,q_x,q_y,q_z]^T$ and gyroscope bias $b_g\in\mathbb{R}^3$. The local ESKF error state and its covariance are
 
 $$
-\delta x = \begin{bmatrix}\delta\theta \\ \delta\ b_g\end{bmatrix}\in\mathbb{R}^6,
+\delta x = 
+\begin{bmatrix}
+\delta\theta \\ 
+\delta\ b_g
+\end{bmatrix}
+\in\mathbb{R}^6,
 \qquad P\in\mathbb{R}^{6\times6}.
 $$
 
@@ -85,7 +90,11 @@ $\hat\omega_k$ is a bias-corrected angular rate vector
 The continuous nominal quaternion equation is
 
 $$
-\dot q = \frac{1}{2}q \otimes\begin{bmatrix}0 \\ \hat\omega \end{bmatrix},
+\dot q = \frac{1}{2}q \otimes 
+\begin{bmatrix}
+0 \\ 
+\hat\omega 
+\end{bmatrix},
 \qquad \dot b_g=0
 $$
 
