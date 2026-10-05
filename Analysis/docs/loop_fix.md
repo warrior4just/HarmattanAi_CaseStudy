@@ -54,10 +54,17 @@ The current performance suggests that the existing implementation utilizes an in
 The current PID structure:
 
 $$
-𝐶(𝑠)=𝐾(1 + 1/(𝑇_𝑖 𝑠) + 𝑇_𝑑 𝑠)\\
+𝐶(𝑠)=𝐾(1 + 1/(𝑇_𝑖 𝑠) + 𝑇_𝑑 𝑠)
+$$
+$$
 C(s) = K_p + \frac{K_i}{s} + K_ds
 $$
-with $K_p =K$, $K_i = \frac{K}{T_i}$ , and $K_d=KT_d$
+
+With 
+
+$$
+K_p =K, \qquad K_i = \frac{K}{T_i} ,  \qquad K_d=KT_d
+$$
 
 The current instability stems from an aggressive loop gain structure that drives the system too close to its stability boundaries. To suppress the transient ringing and scale back the overshoot, the structural components must be adjusted as follows:
 
