@@ -106,7 +106,8 @@ $\dfrac{\rho_k}{\|\rho_k\|}$ is the unit vector of **$\rho_k$**
 We use a more numerically stable zero-order hold update discrete integration instead of the continuous integration.
 
 $$
-q_{k+1}=\left[\mathbf{I}_{4\times 4}\cos \left(\frac{\|{}\omega_{B}\|{}\Delta t}{2}\right)+\frac{1}{\|{}\omega_{B}\|{}}\Omega (\omega_{B})\sin \left(\frac{\|{}\omega_{B}\|{}\Delta t}{2}\right)\right]q_{k}
+q_{k+1} = 
+\left[\mathbf{I}_{4\times 4}\cos \left(\frac{\|{}\omega_{B}\|{}\Delta t}{2}\right)+\frac{1}{\|{}\omega_{B}\|{}}\Omega (\omega_{B})\sin \left(\frac{\|{}\omega_{B}\|{}\Delta t}{2}\right)\right]q_{k}
 $$
 
 
@@ -118,7 +119,13 @@ where
 
 
 $$
-\Omega (\omega_{B}) = \left[\begin{matrix} 0 & -\omega_{x} & -\omega_{y} &-\omega_{z} \\ \omega_{x} & 0 & \omega_{z} & -\omega_{y} \\ \omega_{y} &-\omega_{z} & 0 & \omega_{x}\\ \omega_{z} & \omega_{y} &-\omega_{x} & 0 \end{matrix} \right]
+\Omega (\omega_{B}) =
+\left[\begin{matrix} 
+0 & -\omega_{x} & -\omega_{y} &-\omega_{z} \\ 
+\omega_{x} & 0 & \omega_{z} & -\omega_{y} \\ 
+\omega_{y} &-\omega_{z} & 0 & \omega_{x} \\ 
+\omega_{z} & \omega_{y} & -\omega_{x} & 0 
+\end{matrix} \right]
 $$
 
 
@@ -132,7 +139,11 @@ $$
 Where : 
 
 $$
-F_c = \begin{bmatrix} - [\hat\omega]_{\times} & -I \\ 0 & 0 \end{bmatrix} 
+F_c = 
+\begin{bmatrix} 
+- [\hat\omega]_{\times} & -I \\
+0 & 0 
+\end{bmatrix} 
 $$
 
 $$
