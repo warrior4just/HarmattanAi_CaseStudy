@@ -18,6 +18,7 @@ $$
 
 
 ![Figure 1-1: Voltage-current discharge](../pics/Battery_Discharge.png)
+
 **Figure 1-1: Voltage-current discharge**
 
 ---
@@ -93,6 +94,7 @@ from the [`battery_flight.csv`]('battery_flight.csv') data, the max cell voltage
 
 
 ![Figure 1-2: OCV function of SoC](..\pics\OCV_vs_SoC.png)
+
 **Figure 1-2: OCV function of SoC**
 
 **Figure 1.2** shows the relationship between the OCV voltage computed from the Kirtchoff's law and the estimated SoC obtained from Coulomb Counting.
@@ -234,6 +236,7 @@ The SoC in both the predicted or corrected step is clipped to $[0,1]$. Also I ze
 The figure compares measured pack voltage with voltage reconstructed from the corrected EKF states, and shows the estimated SoC on the lower axis. It was generated from `Telemetry/battery_discharge.csv`; the first sample uses the initialized state and subsequent samples perform prediction and voltage correction.
 
 ![Figure 3-1: EKF measured and modelled pack voltage with estimated SoC](../pics/battery_flight_ekf_estimate.png)
+
 **Figure 3-1: EKF measured and modelled pack voltage with estimated SoC**
 
 The upper plot is calculated as 
