@@ -11,7 +11,7 @@ An error-state Kalman filter (ESKF) is a good fit because orientation is represe
 The implemented error state has six components:
 
 $$
-\delta x = \begin{bmatrix}\delta\theta & \delta b_g\end{bmatrix}^T,
+\delta x = \begin{bmatrix}\delta\theta \\ \delta b_g\end{bmatrix}
 $$
 
 where $\delta\theta\in\mathbb{R}^3$ is the local attitude error (roll, pitch, yaw) in radians and $\delta b_g\in\mathbb{R}^3$ is the gyroscope-bias error in rad/s. This is an attitude ESKF, not a 15-state position/velocity/attitude ESKF: the CSV does not supply measurements that would correct inertial position or velocity drift.
@@ -29,7 +29,7 @@ The file provides 9,073 samples spanning about 65.28 seconds. We convert the tim
 The nominal state consists of the scalar-first quaternion $q=[q_w,q_x,q_y,q_z]^T$ and gyroscope bias $b_g\in\mathbb{R}^3$. The local ESKF error state and its covariance are
 
 $$
-\delta x = \begin{bmatrix}\delta\theta \\ \delta b_g\end{bmatrix}\in\mathbb{R}^6,
+\delta x = \begin{bmatrix}\delta\theta \\ \delta\ b_g\end{bmatrix}\in\mathbb{R}^6,
 \qquad P\in\mathbb{R}^{6\times6}.
 $$
 
@@ -81,7 +81,7 @@ $\hat\omega_k$ is a bias-corrected angular rate vector
 The continuous nominal quaternion equation is
 
 $$
-\dot q = \frac{1}{2}q\otimes\begin{bmatrix}0\\\hat\omega\end{bmatrix},
+\dot q = \frac{1}{2}q \otimes\begin{bmatrix}0 \\ \hat\omega \end{bmatrix},
 \qquad \dot b_g=0
 $$
 
@@ -117,7 +117,8 @@ $$
 where 
 
 
-$$\Omega (\omega_{B})=\left[\begin{matrix} 0 & -\omega_{x} & -\omega_{y} &-\omega_{z}\\ \omega_{x} & 0 & \omega_{z} & -\omega_{y} \\ \omega_{y} &-\omega_{z} & 0 & \omega_{x}\\ \omega_{z} & \omega_{y} &-\omega_{x} & 0 \end{matrix}\right]
+$$
+\Omega (\omega_{B}) = \left[\begin{matrix} 0 & -\omega_{x} & -\omega_{y} &-\omega_{z} \\ \omega_{x} & 0 & \omega_{z} & -\omega_{y} \\ \omega_{y} &-\omega_{z} & 0 & \omega_{x}\\ \omega_{z} & \omega_{y} &-\omega_{x} & 0 \end{matrix} \right]
 $$
 
 
@@ -131,7 +132,7 @@ $$
 Where : 
 
 $$
-F_c=\begin{bmatrix}-[\hat\omega]_{\times}&-I\\0&0\end{bmatrix} 
+F_c = \begin{bmatrix} - [\hat\omega]_{\times} & -I \\ 0 & 0 \end{bmatrix} 
 $$
 
 $$
@@ -245,7 +246,7 @@ Refer to appendix for the relationship between DCM and quaternion based attitude
 **Prediction:**
 - In this step, we integrate the 3-axis gyro's angular rates through  quaternion representation and propagate error covariance.
 
-** Update:**
+**Update:**
 - We incorporate the three-axis accelerometer vector samples. We compare the measured acceleration vector with a predicted gravity directions to correct attitude and maintain boundaed gyro-bias components.
 
 
