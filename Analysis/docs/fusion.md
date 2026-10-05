@@ -11,7 +11,11 @@ An error-state Kalman filter (ESKF) is a good fit because orientation is represe
 The implemented error state has six components:
 
 $$
-\delta x = \begin{bmatrix}\delta\theta \\ \delta b_g\end{bmatrix}
+\delta x = 
+\begin{bmatrix}
+\delta\theta \\ 
+\delta b_g
+\end{bmatrix}
 $$
 
 where $\delta\theta\in\mathbb{R}^3$ is the local attitude error (roll, pitch, yaw) in radians and $\delta b_g\in\mathbb{R}^3$ is the gyroscope-bias error in rad/s. This is an attitude ESKF, not a 15-state position/velocity/attitude ESKF: the CSV does not supply measurements that would correct inertial position or velocity drift.
@@ -141,17 +145,23 @@ Where :
 $$
 F_c = 
 \begin{bmatrix} 
-- [\hat\omega]_{\times} & -I \\
+-[\hat\omega]_{\times} & -I \\
 0 & 0 
 \end{bmatrix} 
 $$
 
 $$
-G=\begin{bmatrix} -I & 0 \\  0 & I\end{bmatrix} 
+G=
+\begin{bmatrix} -I & 0 \\ 
+0 & I
+\end{bmatrix} 
 $$
 
 $$
-w= \begin{bmatrix} n_g \\ n_{bg} \end{bmatrix} 
+w= 
+\begin{bmatrix} n_g \\
+n_{bg} 
+\end{bmatrix} 
 $$
 
 $w$ is the process-noise vector (not the same as the angular-rates $\omega$), containing gyro noise and gyro-bias random-walk noise, and $I$ is the identity matrix. Here $\hat\omega$ is the bias-corrected body angular-rate vector, not the noise term.
@@ -176,7 +186,7 @@ Q_k= \begin{bmatrix} \sigma_g^2\Delta t_k I_3 & 0
 $$
 
 $$
-P_{k+1}^-=F_kP_k^+F_k^T+Q_k.
+P_{k+1}^-=F_kP_k^+F_k^T + Q_k
 $$
 
 In this implementation, $\sigma_g=0.015$ and $\sigma_{bg}=0.0005$ in the code's assumed noise units. These are initial tuning assumptions, not values estimated from a sensor datasheet.
