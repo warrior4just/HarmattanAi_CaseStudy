@@ -262,7 +262,7 @@ $$
 \frac{dV_{1}(t)}{dt}+\frac{1}{\tau _{1}}V_{1}(t)=\frac{1}{C_{1}}I(t)
 $$
 
-Multiplying the equation by an integrating factor $ e^{\frac{t}{\tau_1}}$
+Multiplying the equation by an integrating factor $e^{\frac{t}{\tau_1}}$
 
 $$
 e^{\frac{t}{\tau _{1}}}\frac{dV_{1}(t)}{dt}+\frac{1}{\tau _{1}}e^{\frac{t}{\tau _{1}}}V_{1}(t)=e^{\frac{t}{\tau _{1}}}\frac{1}{C_{1}}I(t)
