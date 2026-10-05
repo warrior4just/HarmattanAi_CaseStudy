@@ -34,14 +34,16 @@ In terms of capacity provision, the parallel topology is likely a single string 
 
 
 
-The charged battery at time $ t<9 \text{ sec}$ is $25.227 V$ after which the currect starts to flow (discharge) leading to immediate drop to $25.18V$. Since the cells are serially connected, $V_{cell}= 4.197 \text{V} $. 
+The charged battery at time $t<9\ sec$ is $25.227 V$ after which the currect starts to flow (discharge) leading to immediate drop to $25.18V$. Since the cells are serially connected, $V_{cell}= 4.197 \text{V} $. 
 
 
 At $t = 6342 \text{ sec}$, which is the moment the current drops to 0 A, is the transient response of the RC circuit, which gives us a clue about the $\tau$ (time constant of the dynamics of RC).   
 
 At this relaxation period, the $\tau$ is the 63.2% rise time from 18.648 (across the battery) to $\mathbf{ 19.82 V}$.  In another word is $\tau$ is at voltage  
-$$ V_{\tau}= 18.648 + 0.632 \times (19.814-18.648) = 19.39 V
-$$, 
+
+$$
+V_{\tau}= 18.648 + 0.632 \times (19.814-18.648) = 19.39 V
+$
 
 which is around $\tau = 6451 - 6340 = 111 \text{ sec}$
 
@@ -124,8 +126,8 @@ The measured pack voltage is divided by six before estimation; the plotted model
 | $C_1=\tau/R_1$ | $8880\text{ F}$ | Cell polarization capacitance |
 | Initial SoC | $0.999$ ($99.9\%$) | Initial state at the first sample |
 | Initial polarization voltage | $0\text{ V}$ | Initial state at the first sample |
-| Initial covariance, $P_0$ | $\operatorname{diag}(0.01,\,0.05)$ | Variances for the state $[v_1, SoC]$ |
-| Process covariance, $Q$ | $\operatorname{diag}(10^{-4},\,10^{-7})$ per sample | Process/State-model uncertainty |
+| Initial covariance, $P_0$ | $diag\ (0.01,\,0.05)$ | Variances for the state $[v_1, SoC]$ |
+| Process covariance, $Q$ | $diag\ (10^{-4},\,10^{-7})$ per sample | Process/State-model uncertainty |
 | Voltage measurement variance, $R_v$ | $1.96 \times 10^{-6}\text{ V}^2$ | Equivalent standard deviation: $10\text{ mV}$ per cell |
 
 The CSV current is positive for discharge, while the estimator defines positive current as charging. 
@@ -158,7 +160,11 @@ where $z = [z^7, z^6,  z^5, z^4, z^3, z^2, z^1, 1]^T$ and $\lambda$ is the param
 The state vector and its covariance are
 
 $$
-x_k=\begin{bmatrix}v_{1,k}\\z_k\end{bmatrix}  \in R^2, \qquad P_k=\operatorname{Cov}(x_k) \in R^{2 \times 2}
+x_k=
+\begin{bmatrix}
+v_{1,k} \\
+z_k
+\end{bmatrix}  \in R^2, \qquad P_k=\operatorname{Cov}(x_k) \in R^{2 \times 2}
 $$
 
 For the elapsed time $\Delta t_k=t_k-t_{k-1}$, the zero-order-hold prediction uses the previous current sample ( $I_k$ remains constant during $\Delta t_k$ ). 
@@ -171,9 +177,13 @@ The discrete state prediction (See [Appendix](#Appendix) for derivation) is
 
 $$
 \begin{aligned}
-v_{1,k}^{-}&=a_kv_{1,k-1}+R_1(1-a_k)I_{k-1},\\
-z_k^{-}&= z_{k-1}+\frac{\Delta t_k I_{k-1}}{3600 \times Q_{nom}} ;   z_k \in [0, 1] ,\\
-F_k&=\begin{bmatrix}a_k&0\\0&1\end{bmatrix},\\
+v_{1,k}^{-}&=a_kv_{1,k-1}+R_1(1-a_k)I_{k-1} ,\\
+z_k^{-}&= z_{k-1}+\frac{\Delta t_k I_{k-1}}{3600 \times Q_{nom}}  &;   z_k \in [0, 1] ,\\
+F_k&=
+\begin{bmatrix}
+a_k & 0 \\
+0 & 1
+\end{bmatrix} ,\\
 P_k^{-}&=F_kP_{k-1}F_k^\mathsf{T}+Q
 \end{aligned}
 $$
@@ -243,12 +253,15 @@ The continuous differential equation as stated above for the RC voltage
 $$
 \frac{dV_{1}(t)}{dt}=-\frac{1}{\tau _{1}}V_{1}(t)+\frac{1}{C_{1}}I(t)
 $$
+
 Where $\tau_1 = R_1 C_1$
 
 Rearranging it into standard linear form gives: 
+
 $$
 \frac{dV_{1}(t)}{dt}+\frac{1}{\tau _{1}}V_{1}(t)=\frac{1}{C_{1}}I(t)
 $$
+
 Multiplying the equation by an integrating factor $ e^{\frac{t}{\tau_1}}$
 
 $$
@@ -281,11 +294,13 @@ $$
 $$
 
 Since the resistance $R_1$:
+
 $$
 R_1 = \frac{\tau _{1}}{C_{1}}
 $$
 
 Then
+
 $$
 \int _{t_{k}}^{t_{k+1}}e^{\frac{t}{\tau _{1}}}\frac{1}{C_{1}}I(t)dt = 
 R_{1}I_{k}\left(e^{\frac{t_{k+1}}{\tau _{1}}}-e^{\frac{t_{k}}{\tau _{1}}}\right)
