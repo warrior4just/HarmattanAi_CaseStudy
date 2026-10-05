@@ -82,7 +82,7 @@ $$
 
 Such that $K_d = \tau_f$ and $\mathbf{N}$ is heuristic filter divisor. Typically chose between 10 and 20.
 
-With this modification in mind, there is more granular tuning on the effect of the derivative on the transient dynamics. **As a result it is recommended to reduce $\tau_f$ to lower values to attentuate the oscillations. The step function has high frequency components so filtering some of those high frequencies with ensure less oscillatory transient tracking.**
+With this modification in mind, there is more granular tuning on the effect of the derivative on the transient dynamics. **As a result it is recommended to reduce $\tau_f$ to lower values to attentuate the oscillations. The step function has high frequency components so filtering some of those high frequencies would ensure less oscillatory transient tracking.**
 
 Anoter consideration, in certain dynamics (e.g. low-intertia motors) is to apply the derivation term exclusively to the output instead of the error, the reason being is that $(C(s))$ transfer function affect the error, and when there is sudden injection of a setpoint (step input) the error derivative is very (impulse) leading to saturation at the actuation 
 
@@ -93,7 +93,7 @@ Anoter consideration, in certain dynamics (e.g. low-intertia motors) is to apply
 
 + **Reduce $K_p$ by $15\% -25\%$** to bring the baseline overshoot down.
 
-+ **Incrementally step up $K_d$** to damp the transient high-frequency ringing
++ **Incrementally step up $K_d$** to dampen the transient high-frequency ringing
 
 + **Recalibrate the internal System Model's scalar gain by $\approx +40\text{ dB}$** so that it aligns accurately with the empirical open-loop curves for future simulation accuracy.
 
