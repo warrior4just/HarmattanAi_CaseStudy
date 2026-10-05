@@ -58,6 +58,8 @@ To isolate meaningful true angular rate $\mathbf{\omega }_{B}$ from the raw meas
 $$
 \mathbf{\omega }_{B}=\mathbf{M}^{-1}\left(\mathbf{\omega }_{raw}-\mathbf{b}-\mathbf{n}\right)
 $$
+
+
 where 
 
 $\mathbf{M}$: is a calibration matrix that captures axes-misalignment and any scale factors.
@@ -115,7 +117,7 @@ $$
 where 
 
 
-$$\Omega (\omega_{B})=\left[\begin{matrix}0&-\omega _{x}&-\omega _{y}&-\omega _{z}\\ \omega _{x}&0&\omega _{z}&-\omega _{y}\\ \omega _{y}&-\omega _{z}&0&\omega _{x}\\ \omega _{z}&\omega _{y}&-\omega _{x}&0\end{matrix}\right]
+$$\Omega (\omega_{B})=\left[\begin{matrix} 0 & -\omega_{x} & -\omega_{y} &-\omega_{z}\\ \omega_{x} & 0 & \omega_{z} & -\omega_{y} \\ \omega_{y} &-\omega_{z} & 0 & \omega_{x}\\ \omega_{z} & \omega_{y} &-\omega_{x} & 0 \end{matrix}\right]
 $$
 
 
@@ -129,8 +131,14 @@ $$
 Where : 
 
 $$
-F_c=\begin{bmatrix}-[\hat\omega]_{\times}&-I\\0&0\end{bmatrix} \\
-G=\begin{bmatrix}-I&0\\0&I\end{bmatrix} \\
+F_c=\begin{bmatrix}-[\hat\omega]_{\times}&-I\\0&0\end{bmatrix} 
+$$
+
+$$
+G=\begin{bmatrix} -I & 0 \\  0 & I\end{bmatrix} 
+$$
+
+$$
 w= \begin{bmatrix} n_g \\ n_{bg} \end{bmatrix} 
 $$
 
