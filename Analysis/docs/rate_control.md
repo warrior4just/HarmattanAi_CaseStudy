@@ -53,9 +53,9 @@ T_{motor} = \frac{m.g}{4}
 $$
 
 
-For a total mass of $1.14 Kg$, the thrust per motor required is $2.795 N$
+For a total mass of $1.14\ Kg$, the thrust per motor required is $2.795\ N$
 
-From the figure 3-1, the RPM corresponding to required thrust per motor is $ \mathbf{14250 RPM}$
+From the figure 3-1, the RPM corresponding to required thrust per motor is $ 14250\ \mathbf{ RPM}$
 
 
 ![Thrust (N) vs RPM](../pics/Thrust_vs_RPM_sp_meas.png)
@@ -340,13 +340,14 @@ This is the post controller stage entering the actuation (motors) which maps the
 
 
 $$
+\begin{aligned}
 \begin{bmatrix}
 u_1 \\
 u_2 \\
 u_3 \\
 u_4
 \end{bmatrix}
-=
+&=
 \begin{bmatrix}
 1 & 1 \\
 -1 & 1 \\
@@ -357,6 +358,7 @@ u_4
 \delta_p \\
 \delta_q
 \end{bmatrix}
+\end{aligned}
 $$
 
 
