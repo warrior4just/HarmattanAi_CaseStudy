@@ -52,7 +52,9 @@ A standard strapdown gyroscope measurement vector $\omega_{raw}$ is modeled as:
 $$
 \mathbf{ \omega}_{raw}= \mathbf{M}\mathbf{\omega }_{B}+\mathbf{b}+\mathbf{n}
 $$
+
 To isolate meaningful true angular rate $\mathbf{\omega }_{B}$ from the raw measurement, typically this step is performed: 
+
 $$
 \mathbf{\omega }_{B}=\mathbf{M}^{-1}\left(\mathbf{\omega }_{raw}-\mathbf{b}-\mathbf{n}\right)
 $$
@@ -105,6 +107,7 @@ $$
 q_{k+1}=\left[\mathbf{I}_{4\times 4}\cos \left(\frac{\|{}\omega_{B}\|{}\Delta t}{2}\right)+\frac{1}{\|{}\omega_{B}\|{}}\Omega (\omega_{B})\sin \left(\frac{\|{}\omega_{B}\|{}\Delta t}{2}\right)\right]q_{k}
 $$
 
+
 $$
 \mathbf{q}_{k+1}=\frac{\mathbf{q}_{k+1}}{\|{}\mathbf{q}_{k+1}\|{}}
 $$
@@ -124,6 +127,7 @@ $$
 $$
 
 Where : 
+
 $$
 F_c=\begin{bmatrix}-[\hat\omega]_{\times}&-I\\0&0\end{bmatrix} \\
 G=\begin{bmatrix}-I&0\\0&I\end{bmatrix} \\
@@ -150,6 +154,7 @@ Q_k= \begin{bmatrix} \sigma_g^2\Delta t_k I_3 & 0
 0 & \sigma_{bg}^2\Delta t_k I_3
 \end{bmatrix}
 $$
+
 $$
 P_{k+1}^-=F_kP_k^+F_k^T+Q_k.
 $$
@@ -207,7 +212,7 @@ $$
 Covariance uses the numerically stable Joseph form and is transformed back to the new local attitude-error coordinates:
 
 $$
-P_{Joseph}=(I-K_kH_k)P_k^-(I-K_kH_k)^T+K_kR_kK_k^T.
+P_{Joseph}=(I-K_kH_k)P_k^-(I-K_kH_k)^T+K_kR_kK_k^T
 $$
 
 The small-angle reset Jacobian is applied to the attitude block, after which the conceptual error state is reset to $\delta x=0$ and the corrected nominal state continues to the next gyro sample.
