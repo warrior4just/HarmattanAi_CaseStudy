@@ -291,15 +291,7 @@ Gravity vector provide information about the direction of the local vertical but
 Yaw is propagated by integrating the gyro component around the vertical direction. Any residual bias accumulates over time; approximately, a constant yaw-rate bias error $\delta b_z$ creates heading error $\delta\psi(t)\approx\delta b_z t$, in addition to integrated gyro noise. Although computed and integrated, the yaw is not plotted. An absolute heading reference such as a magnetometer, vision, or digital compass is needed to process the drift arising from yaw's bias.
 
 
-### Dynamic-acceleration rejection
 
-The correction is not applied blindly. The implementation:
-
-- Rejects a sample if its acceleration magnitude differs from $g=9.80665\ \mathrm{m/s^2}$ by more than 2.5 $\mathrm{m/s^2}$.
-- Increases accelerometer measurement uncertainty as the magnitude departs from gravity.
-- Rejects the direction measurement if its normalized innovation squared exceeds 16.27 (a 3D chi-square gate at approximately 99.9%).
-
-These checks reduce the chance that translational acceleration is mistaken for tilt. They do not perfectly distinguish gravity from sustained acceleration; that requires additional sensors or a richer motion model.
 
 ## Estimation Result
 
