@@ -59,13 +59,13 @@ The first 0.5 s of data initializes the nominal state. The mean gyro sample is t
 A standard strapdown gyroscope measurement vector $\omega_{raw}$ is modeled as:
 
 $$
-\mathbf{ \omega}_{raw}= \mathbf{M}\mathbf{\omega }_{B}+\mathbf{b}+\mathbf{n}
+\mathbf{ \omega}_{raw}= \mathbf{M}\mathbf{\omega }_{B}+\mathbf{b_g}+\mathbf{n_g}
 $$
 
-To isolate meaningful true angular rate $\mathbf{\omega }_{B}$ from the raw measurement, typically this step is performed: 
+To isolate meaningful btrue angular rate $\mathbf{\omega }_{B}$  (measured with respect to the inertial frame but expressed in body-frame) from the raw measurement, typically this step is performed: 
 
 $$
-\mathbf{\omega }_{B}=\mathbf{M}^{-1}\left(\mathbf{\omega }_{raw}-\mathbf{b}-\mathbf{n}\right)
+\mathbf{\omega }_{B}=\mathbf{M}^{-1}\left(\mathbf{\omega}_{raw}-\mathbf{b_g}-\mathbf{n_g}\right)
 $$
 
 
@@ -73,9 +73,9 @@ where
 
 $\mathbf{M}$: is a calibration matrix that captures axes-misalignment and any scale factors.
 
-$\mathbf{b}$: is the gyro-bias, which includes the turn-on bias and the random walk process based bias.  
+$\mathbf{b_g}$: is the gyro-bias, which includes the turn-on bias and the random walk process based bias.  
 
-$\mathbf{n}$: is the high-frequncy noise component. 
+$\mathbf{n_g}$: is the high-frequncy noise component. 
 
 Assuming aligned gyro and accelerometer data, we simplify the model. At every sample, the measured gyro is the input to the attitude propagation, with bias-corrected rate
 

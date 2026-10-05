@@ -52,7 +52,7 @@ If $R_0= 25\ m\Omega$ and $R_1= 12.5\ m\Omega $
 then
 
 $$
-C_{1}=\frac{\tau }{R_{1}}=\frac{111\,\mathrm{s}}{0.0125\,\Omega}=\mathbf{8880}\,\mathrm{F} 
+C_{1}=\frac{\tau }{R_{1}}=\frac{111\,\mathrm{s}}{0.0125\,\Omega}=\mathbf{8880}\ \mathrm{F} 
 $$
 
 
