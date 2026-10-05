@@ -169,7 +169,8 @@ x_k=
 v_{1,k} \\
 z_k
 \end{bmatrix}  
-\in R^2, \qquad P_k=\operatorname{Cov}(x_k) \in R^{2 \times 2}
+\in R^2, 
+\qquad P_k= Cov(x_k) \in R^{2 \times 2}
 $$
 
 For the elapsed time $\Delta t_k=t_k-t_{k-1}$, the zero-order-hold prediction uses the previous current sample ( $I_k$ remains constant during $\Delta t_k$ ). 
