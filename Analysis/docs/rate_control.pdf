@@ -1,170 +1,36 @@
-Problem 3: Quadcopter Model
-
-Below we answer the questions to problem 3. The implementations are provided in the following Python programs:
-
-Pitch axis
-
-File: pitch_compensator.py
-
-The script models one rotational axis as a SISO loop after allocating motor command changes through a pitcher mixer.
-
-Roll axis
-
-File: roll_compensator.py
-
-Each script models one axis body-expressed rotational rate as a SISO loop with motor commands allocation through a roll mixer.
-
-1. Expected hover RPM
-
-The thrust per each motor is:
-
-T_i = C_T * rho * n^2 * D^4
-
-Simplified to:
-
-T_i ≈ k_thrust * omega^2
-
-where omega is the angular speed in rad/s.
-
-A hover state is when the net total forces and moments are zero:
-
-sum_i F_i = 0
-sum_i M_i = 0
-
-The thrust per motor required to balance the weight is:
-
-T_motor = m.g / 4
-
-For a total mass of 1.14 kg, the thrust per motor required is 2.795 N.
-
-From the figure, the RPM corresponding to required thrust per motor is 14250 RPM.
-
-2. Nonlinear MISO models
-
-The drone X configuration is symmetric. The pitch motion occurs when there is a differential between the thrust of (F1 + F2) and (F3 + F4). The roll motion occurs when there is a differential between the thrust of (F1 + F4) and (F2 + F3).
-
-We assume proportional relationship between motor thrust and angular speed:
-
-T_i = k_thrust * omega^2
-
-Given Lx = 0.07 m and Ly = 0.09 m, and the body inertia terms:
-
-J_xx = 1.2673e-3 kg.m^2
-J_yy = 1.2193e-3 kg.m^2
-
-For pitch rate q:
-
-q_dot = (Lx / J_yy) * sum F_i
-q_dot = (Lx * k_thrust / J_yy) * (omega_1^2 + omega_2^2 - omega_3^2 - omega_4^2)
-
-For roll rate p:
-
-p_dot = (Ly / J_xx) * sum F_i
-p_dot = (Ly * k_thrust / J_xx) * (omega_1^2 - omega_2^2 - omega_3^2 + omega_4^2)
-
-3. Linearization of the MISO models
-
-The motor thrust at hover is nonlinear:
-
-F(omega) = k_thrust * omega^2
-
-Linearization around hover point omega_0:
-
-F(omega) ≈ F(omega_0) + dF/domega|_omega0 * (omega - omega_0)
-
-with dF/domega = 2 k_thrust * omega, so:
-
-F_i ≈ k_thrust * omega_0^2 + 2 k_thrust * omega_0 * u_i
-
-where u_i = omega_i - omega_0.
-
-The input linearized pitch equation becomes:
-
-q_dot = [2 * Lx * k_thrust * omega_0 / J_yy] * (u_1 + u_2 - u_3 - u_4)
-
-Similarly, the linearized roll equation becomes:
-
-p_dot = [2 * Ly * k_thrust * omega_0 / J_xx] * (u_1 - u_2 - u_3 + u_4)
-
-4. Decoupling MISO models
-
-Mixed pitch-rate input delta_q:
-
-delta_q = u_1 + u_2 - u_3 - u_4
-
-Mixed roll-rate input delta_p:
-
-delta_p = u_1 - u_2 - u_3 + u_4
-
-The plant is approximated as a type-1 system with motor dynamics:
-
-G_motor = 1 / (T_motor * s + 1)
-
-Thus:
-
-G_q(s) = eta_q / [s (T_motor s + 1)]
-G_p(s) = eta_p / [s (T_motor s + 1)]
-
-with
-
-eta_q = 2 * Lx * k_thrust * omega_0 / J_yy
-eta_p = 2 * Ly * k_thrust * omega_0 / J_xx
-
-5. Poles and control margins
-
-The uncompensated open-loop pitch-rate and roll-rate transfer functions are second-order type-1 systems.
-
-Pitch-rate transfer function:
-
-G_p(s) = 0.215 / (0.05 s^2 + s)
-
-Poles: -20 and 0
-Gain Margin: infinity
-Phase Margin: 89.38 deg at 0.22 rad/s
-
-Roll-rate transfer function:
-
-G_p(s) = 0.266 / (0.05 s^2 + s)
-
-Poles: -20 and 0
-Gain Margin: infinity
-Phase Margin: 89.24 deg at 0.27 rad/s
-
-6. Design a regulator for both rate transfer functions
-
-Assuming a 1 kHz sampling rate and target times:
-
-Rise time: 80 ms
-Settling time: 220 ms
-Overshoot: < 5%
-Delay: 1 ms
-PM: > 60 deg
-GM: > 6 dB
-
-The phase lead compensator used is:
-
-C(s) = K_c * (s + z) / (s + p)
-
-For pitch-rate:
-
-C(s) = 621.376 * (s + 17.585) / (s + 67.197)
-
-For roll-rate:
-
-C(s) = 767.539 * (s + 19.100) / (s + 89.110)
-
-The compensated open-loop systems retain acceptable phase margin and transient behavior.
-
-7. Robustness and uncertainty
-
-Vector margin is the inverse of the maximum sensitivity peak:
-
-VM = 1 / max|S(jw)|
-
-Design target:
-
-M_s = max|S(jw)| <= 1.6
-
-This is a standard tradeoff between tracking performance and noise rejection. At low frequencies, the loop gain should be large for good disturbance rejection. At high frequencies, the loop gain should be small to attenuate noise and avoid amplification of unmodeled dynamics.
-
-This document summarizes the quadcopter rate-control derivation and regulator design, including hover calculation, plant linearization, mixer decoupling, and lead-compensator design.
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 59 >>
+stream
+BT
+/F1 18 Tf
+72 720 Td
+(Problem 3: Quadcopter Model) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000235 00000 n 
+0000000344 00000 n 
+trailer
+<< /Root 1 0 R /Size 6 >>
+startxref
+412
+%%EOF
