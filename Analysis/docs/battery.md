@@ -38,7 +38,7 @@ In terms of capacity provision, the parallel topology is likely a single string 
 The charged battery at time $t<9\ sec$ is $25.227 V$ after which the currect starts to flow (discharge) leading to immediate drop to $25.18V$. Since the cells are serially connected, $V_{cell}= 4.197 \text{V} $. 
 
 
-At $t = 6342 \text{ sec}$, which is the moment the current drops to 0 A, is the transient response of the RC circuit, which gives us a clue about the $\tau$ (time constant of the dynamics of RC).   
+At $t = 6342 \text{ sec}$, which is the moment the current drops to $0\ A$, is the transient response of the RC circuit, which gives us a clue about the $\tau$ (time constant of the dynamics of RC).   
 
 At this relaxation period, the $\tau$ is the 63.2% rise time from 18.648 (across the battery) to $\mathbf{ 19.82 V}$.  In another word is $\tau$ is at voltage  
 
@@ -48,7 +48,7 @@ $$
 
 which is around $\tau = 6451 - 6340 = 111 \text{ sec}$
 
-If $R_0= 25 \text{m}\Omega $ and $R_1= 12.5 \text{m}\Omega $ 
+If $R_0= 25\ m\Omega$ and $R_1= 12.5\ m\Omega $ 
 then
 
 $$
@@ -93,7 +93,7 @@ Because the topology does not change as there is no parallel configuration. The 
 from the [`battery_flight.csv`]('battery_flight.csv') data, the max cell voltage for the **4S1P** is **$4.30 \text{ V}$**.
 
 
-![Figure 1-2: OCV function of SoC](..\pics\OCV_vs_SoC.png)
+![Figure 1-2: OCV function of SoC](../pics/OCV_vs_SoC.png)
 
 **Figure 1-2: OCV function of SoC**
 
@@ -168,7 +168,8 @@ x_k=
 \begin{bmatrix}
 v_{1,k} \\
 z_k
-\end{bmatrix}  \in R^2, \qquad P_k=\operatorname{Cov}(x_k) \in R^{2 \times 2}
+\end{bmatrix}  
+\in R^2, \qquad P_k=\operatorname{Cov}(x_k) \in R^{2 \times 2}
 $$
 
 For the elapsed time $\Delta t_k=t_k-t_{k-1}$, the zero-order-hold prediction uses the previous current sample ( $I_k$ remains constant during $\Delta t_k$ ). 
