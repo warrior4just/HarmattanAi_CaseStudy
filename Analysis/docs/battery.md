@@ -17,7 +17,7 @@ Capacity =\frac{1.0\,\mathrm{A}\times 6340\,\mathrm{s}}{3600\,\mathrm{s/hr}} = \
 $$
 
 
-![Figure 1-1: Voltage-current discharge](..\pics\Battery_Discharge.png)
+![Figure 1-1: Voltage-current discharge](../pics/Battery_Discharge.png)
 **Figure 1-1: Voltage-current discharge**
 
 ---
@@ -43,14 +43,16 @@ At this relaxation period, the $\tau$ is the 63.2% rise time from 18.648 (across
 
 $$
 V_{\tau}= 18.648 + 0.632 \times (19.814-18.648) = 19.39 V
-$
+$$
 
 which is around $\tau = 6451 - 6340 = 111 \text{ sec}$
 
 If $R_0= 25 \text{m}\Omega $ and $R_1= 12.5 \text{m}\Omega $ 
 then
 
-$$C_{1}=\frac{\tau }{R_{1}}=\frac{111\,\mathrm{s}}{0.0125\,\Omega}=\mathbf{8880}\,\mathrm{F} $$
+$$
+C_{1}=\frac{\tau }{R_{1}}=\frac{111\,\mathrm{s}}{0.0125\,\Omega}=\mathbf{8880}\,\mathrm{F} 
+$$
 
 
 ### SoC Coulomb counting:
