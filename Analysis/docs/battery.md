@@ -212,7 +212,7 @@ The precomputed cofficients of the polyniomial used to estimate **$OCV(Soc)$** a
 
 
 
-| **Coefficient** | $P_7$ | $P_6$ | $P_5$ | $P_4$ | $P_3$ | $P_2$ | $P_1$ | $P_0$ |
+| **Coefficient $\lambda_i$** | $P_7$ | $P_6$ | $P_5$ | $P_4$ | $P_3$ | $P_2$ | $P_1$ | $P_0$ |
 |---|---|---|---|---|---|---|---|---|
 | **Value**| 156.99 | -599.64 | 924.67 | -738.43 | 326.25 |  -78.49  |  9.61 |   3.28
 
