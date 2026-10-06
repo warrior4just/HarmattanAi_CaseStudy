@@ -1,7 +1,7 @@
 
 # Battery Management System
 
-This page aims to devulge necessary information from **battery_discharge.csv** and **batter_flight.csv** information to construct a Kalman based state of charge (SoC) state estimator
+This page answers prerequisites information from **battery_discharge.csv** and **batter_flight.csv** about the battery model and properties to implement a Kalman based state of charge (SoC) state estimator
 
 The implementation file is
 [`ekf_soc_estimator.py`](/Battery/ekf_soc_estimator.py)
@@ -122,8 +122,8 @@ The measured pack voltage is divided by six before estimation; the plotted model
 
 | Parameter | Value | Meaning |
 |---|---:|---|
-| Nominal capacity, $Q_{nom}$ | $1.760\text{ Ah}=6336\text{ C}$ | Coulomb-counting capacity |
-| Series cells | 6 | Pack-to-cell voltage conversion |
+| Nominal capacity, $Q_{nom}$ | $10000\text{ mAh}$ | Coulomb-counting capacity |
+| Series cells | 4 | Pack-to-cell voltage conversion |
 | $R_0$ | $0.025\ \Omega$ | Cell ohmic resistance |
 | $R_1$ | $0.0125\ \Omega$ | Cell polarization resistance |
 | $\tau$ | $111\text{ s}$ | RC time constant |
