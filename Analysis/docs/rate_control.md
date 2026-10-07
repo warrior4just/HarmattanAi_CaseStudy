@@ -55,7 +55,7 @@ $$
 
 For a total mass of $1.14\ Kg$, the thrust per motor required is $2.795\ N$
 
-From the figure 3-1, the RPM corresponding to required thrust per motor is $ 14250\ \mathbf{ RPM}$
+From the figure 3-1, the RPM corresponding to required thrust per motor is $14250\ \text{RPM}$
 
 
 ![Thrust (N) vs RPM](../pics/Thrust_vs_RPM_sp_meas.png)
@@ -311,7 +311,7 @@ $$
 G_{motor} = \frac{1}{T_{motor} s + 1}
 $$
 
-Where $T_{motor}$ is the motor time constant, taken to be $T_{motor}$ is $20 \text{ ms}$ assuming the sampling time **$dt$**
+Where $T_{motor}$ is the motor time constant, taken to be $T_{motor}$ is $50 \text{ ms}$ assuming the sampling time **$dt$**
 
 Finally the plant SISO transfer functions are:
 
@@ -371,7 +371,7 @@ The uncompensated open-loop pitch-rate $G_q(s)$ and $G_p(s)$ are second order ty
 + ###  $G_q(s)$ Pitch-Rate Transfer Function
 
 $$
-G_p(s) = \frac{0.215}{0.05 s^2+s}
+G_q(s) = \frac{0.215}{0.05 s^2+s}
 $$
 
 There are two poles :  **$(-20.0, 0.j)$** and at the origin **$(0.0 + 0.0j)$**
@@ -389,11 +389,22 @@ $$
  
 There are two poles :  **$(-20.0, 0.j)$** and at the origin **$(0.0 + 0.0j)$**
 
-**Gain Margin (GM):**     inf (or inf dB) at nan rad/s
+**Gain Margin (GM):**   $\infty$ (asymptotic approach to $-180^\circ$) 
 
-**Phase Margin (PM):**    $89.24°$ at $0.27 rad/s$
+**Phase Margin (PM):**    $89.24°$ at $0.27 \text{ rad/s}$
 
-While the gain margin theoretically is infinity in the continuous-time case implying that the sytem remains stable in terms of gain as it never crosses the $-180 deg$ line, once we discretize the system, the potential for infinite gain disappears and becomes a finite number.
+While the gain margin theoretically is infinity in the continuous-time case implying that the sytem remains stable in terms of gain as it never crosses the $-180 \text{ deg}$ line, once we discretize the system, the potential for infinite gain disappears and becomes a finite number.
+
+Even with such high PM (See figure 1-2 and 1-3), we see that the open-loop gain cross-over frequnecies are very low : at $0.22\ \text{rad/s}$ and $0.27\ \text{rad/s}$ for the $G_q(s)$ and $G_p(s)$ respectively. This suggests that the system is sluggish when commanded, with slow step tracking which is unacceptable for inner-most response, even more alarming if the motor command is sustained it will lead to unbounded accumulated errors.
+
+![Pitch-rate Uncompensated Open-Loop Bode Plot](../pics/UncompensatedPitchRateBodePlot.png)
+
+*Figure 1-2: Bode plot of the uncompensated Open-loop pitch rate system*
+
+
+![Roll-rate Uncompensated Open-Loop Bode Plot](../pics/UncompensatedRollRateBodePlot.png)
+
+*Figure 1-3: Bode plot of the uncompensated Open-loop roll rate system*
 
 
 
@@ -414,7 +425,7 @@ The rise time and settling time are 80 and 220 ticks respectively, so assuming a
 |$PM$ | $> 60^\circ$ |
 |$GM$ | $> 6 dB$ |
 
-Control transfer function was designed using phase Lead compensator, which is suitable for damping the type-1 (one integrator term) second order system. Discretization of the lead compensator and transforming it to a PID structure would add an integrator action (See [pitch_compensator.py](../RateControl/pitch_compensator.py) and [roll_compensator.py](../RateControl/roll_compensator.py) for implementation).  
+Control transfer function was designed using phase Lead compensator, which is suitable for damping the type-1 (one integrator term) second order system. Discretization of the lead compensator and transforming it to a PID structure would add an integrator action (See [pitch_compensator.py](../RateControl/pitch_compensator.py) and [roll_compensator.py](../RateControl/roll_compensator.py) for implementation of the continuous-domain lead compensator).  
 
 
 The structure of the phase lead compensator is :
@@ -437,7 +448,7 @@ $$
 
 ---
 
-Note that the controllers' continuous-domain transfer functions can easily be dsicretized (tustin method) then transformed into an equivalent difference equations relating the control input $u[k]$ to error $e[k] = \text {set-point} - y[k]$ from which the parallel-form PID terms are obtained.
+Note that the controllers' continuous-domain transfer functions can easily be dsicretized (tustin method) then transformed into an equivalent difference equations relating the control input $u[k]$ to error $e[k] = \text {setpoint} - y[k]$ from which the parallel-form PID terms are obtained.
 
 
 ### Frequency Responses: 
