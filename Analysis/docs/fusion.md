@@ -36,7 +36,7 @@ $$
 \delta x = 
 \begin{bmatrix}
 \delta\theta \\ 
-\delta\ b_g
+\delta b_g
 \end{bmatrix}
 \in\mathbb{R}^6,
 \qquad P\in\mathbb{R}^{6\times6}.

@@ -432,9 +432,12 @@ $$
 
 | Transfer function| Pitch-Rate | Roll-rate |
 | --- | --- | --- |
-| $C(s)$ |  $\frac{621.376(s+17.585)}{s+67.197} $ | $\frac{767.539(s+19.100)}{s+89.110} $ |
-| $L(s)$ | $\mathbf{\frac{ 2350 s + 4.134 \times 10^4}{0.8797 s^3 + 76.68 s^2 + 1182 s}} $ | $\mathbf{ \frac{ 3900 s + 7.448 \times 10^4}{0.9549 s^3 + 104.2 s^2 + 1702 s} }$ |
+| $C(s)$ |  $\frac{621.376(s+17.585)}{s+67.197}$ | $\frac{767.539(s+19.100)}{s+89.110}$ |
+| $L(s)$ | $\frac{ 2350 s + 4.134 \times 10^4}{0.8797 s^3 + 76.68 s^2 + 1182 s}$ | $\frac{3900 s + 7.448 \times 10^4}{0.9549 s^3 + 104.2 s^2 + 1702 s}$ |
 
+---
+
+Note that the controllers' continuous-domain transfer functions can easily be dsicretized (tustin method) then transformed into an equivalent difference equations relating the control input $u[k]$ to error $e[k] = \text {set-point} - y[k]$ from which the parallel-form PID terms are obtained.
 
 
 ### Frequency Responses: 
@@ -476,7 +479,7 @@ Similarly, from **Figure 1-7**, the rise time is just at $42.0\ ms$ which is wit
 
 Gain and phase margin measure instability along specific axes or angles. The vector margin metric on the other hand gives a comprehensive composite measure of robustness against combined gain and phase variations.
 
-So, designing with a vector margin that aims keeping the loop transfer function $L(j\omega)$ away from the critical point $(-1 + j0)$.
+So, designing with a vector margin that aims to keep the loop transfer function $L(j\omega)$ away from the critical point $(-1 + j0)$.
 
 The vector margin is the inverse of the supremum (maximum peak) of the sensitivity transfer function.
 
@@ -489,7 +492,7 @@ Designing for a good vector margin is identical to minimizing the maximum peak o
 
 Robust control methods (e.g. $H_{\infty}$ sensitivity based loop-shaping) with model-order reduction guaranteens robustness, but these methods are overkill for stability augmentation or angular rate compensation for drones, unless stability guarantees on extreme maneuvering is a requirement.
 
-Another way of designing for robutness is for reformulating the problem as an optimal controler (e.g. LQG) or direct PID Tuning via constrained optimization instead of heuristic approaches (e.g. Ziegler-Nichos). The constrained optimization of PID gains would aim in its objective cost function to maximize tracking performance (like minimizing Integrated Absolute Error), subject to a strict non-linear constraint:
+Another way of designing for robutness is reformulating the problem as an optimal controler (e.g. LQG) or direct PID Tuning via constrained optimization instead of heuristic approaches (e.g. Ziegler-Nichos). The constrained optimization of PID gains would aim in its objective cost function to maximize tracking performance (like minimizing Integrated Absolute Error), subject to a strict non-linear constraint:
 
 $$
 M_s=\max_{\omega} \left|S(j\omega)\right| \le 1.6
@@ -508,9 +511,7 @@ $$
 
 Where $T(j\omega)$ is the closed-loop transfer function.
 
-At low frequencies, where good tracking should be achieved, $L(j\omega)$ needs be large. This makes $S(j\omega) \approx 0$ (good disturbance rejection) and $T(j\omega) \approx 1$ (idea setpoint tracking). 
+At low frequencies, where good tracking should be achieved, $L(j\omega)$ needs be large. This makes $S(j\omega) \approx 0$ (good disturbance rejection) and $T(j\omega) \approx 1$ (idea setpoint tracking). While, at high frequencies, $L(j\omega)$ needs be small to filter out high-frequency signals. This makes $S(j\omega) \approx 1$ and $T(j\omega) \approx 0$ (good noise filtering). 
 
-While, at high frequencies, $L(j\omega)$ needs be small to filter out high-frequency signals. This makes $S(j\omega) \approx 1$ and $T(j\omega) \approx 0$ (good noise filtering). 
-
-Another important consideration to design the controller for are frequency specific noise such motor vibrations. One to way to improve noise/viration rejection in this respect is to emply a notch filter at the particular vibration mode without attenuating significantly the bandwidth.
+Another important consideration to design the controller for are frequency specific noise-rejection such motor vibrations. One to way to improve noise/viration rejection in this respect is to employ a notch filter at the particular vibration mode without attenuating significantly the bandwidth.
 
