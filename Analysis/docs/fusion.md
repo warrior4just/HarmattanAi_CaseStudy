@@ -47,10 +47,10 @@ Here $\delta\theta$ is a small three-axis attitude (roll, pitch, yaw) error in r
 The gyroscope model is
 
 $$
-\omega_m = \omega + b_g + n_g,
+\omega_m = \omega + b_g + n_g
 $$
 
-where $\omega_m$ is the measured angular velocity, $\omega$ is the true body angular velocity, and $n_g$ is gyro measurement noise. Bias is modeled as a slowly varying random walk.
+where $\omega_m$ is the measured angular velocity, $\omega$ is the true body angular velocity, and $n_g$ is gyro measurement noise. Bias is modeled as a slowly varying random walk. Typically, Allan Vairance analysis on static testbenches to characterize sensor errors, so to isolate high-frequency white noise from bias or trends or low-frequency/band-limited (colored) noise.
 
 The first 0.5 s of data initializes the nominal state. The mean gyro sample is taken as the initial bias. The mean accelerometer vector is aligned to NED frame of reference, $g_w=[0,0,-1]^T$, to initialize roll and pitch. We assume the platform on which the sensors are straped-down is initially stationary. No heading information is provided, so the initial yaw is an arbitrary value, since rotation about gravity vector produces the same accelerometer direction
 
@@ -211,7 +211,7 @@ z_{a,k}=\frac{a_{m,k}}{\|a_{m,k}\|},
 \qquad
 h(q_k^-)=R(q_k^-)^Tg_n,
 \qquad
-r_k=z_{a,k}-h(q_k^-).
+r_k=z_{a,k}-h(q_k^-)
 $$
 
 For the right-multiplicative attitude error used by the code, the linearized measurement equation is
@@ -221,7 +221,7 @@ r_k\approx H_k\delta x_k+v_k,
 \qquad
 H_k=\begin{bmatrix}[h(q_k^-)]_\times&0_{3\times3}\end{bmatrix},
 \qquad
-v_k\sim\mathcal{N}(0,R_k).
+v_k\sim\mathcal{N}(0,R_k)
 $$
 
 Thus this is a three-component direction observation of a six-component error state. It directly observes tilt errors, but has no direct sensitivity to gyro bias in a single update; bias is adjusted indirectly through covariance coupling over time. The accelerometer correction is not the source of translational velocity or position in this filter.
@@ -233,7 +233,7 @@ S_k=H_kP_k^-H_k^T+R_k,
 \qquad
 K_k=P_k^-H_k^TS_k^{-1},
 \qquad
-\delta x_k=K_kr_k.
+\delta x_k=K_kr_k
 $$
 
 We then injects the correction into the nominal state:
