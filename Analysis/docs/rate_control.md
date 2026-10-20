@@ -397,14 +397,14 @@ While the gain margin theoretically is infinity in the continuous-time case impl
 
 Even with such high PM (See figure 1-2 and 1-3), we see that the open-loop gain cross-over frequnecies are very low : at $0.22\ \text{rad/s}$ and $0.27\ \text{rad/s}$ for the $G_q(s)$ and $G_p(s)$ respectively. This suggests that the system is sluggish when commanded, with slow step tracking which is unacceptable for inner-most response, even more alarming if the motor command is sustained it will lead to unbounded accumulated errors.
 
-![Pitch-rate Uncompensated Open-Loop Bode Plot](../pics/UncompensatedPitchRateBodePlot.png)
+![Pitch-rate Transfer function Bode Plot](../pics/UncompensatedPitchRateBodePlot.png)
 
-*Figure 1-2: Bode plot of the uncompensated Open-loop pitch rate system*
+*Figure 1-2: Bode plot of the pitch rate plant*
 
 
-![Roll-rate Uncompensated Open-Loop Bode Plot](../pics/UncompensatedRollRateBodePlot.png)
+![Roll-rate Transfer Function Bode Plot](../pics/UncompensatedRollRateBodePlot.png)
 
-*Figure 1-3: Bode plot of the uncompensated Open-loop roll rate system*
+*Figure 1-3: Bode plot of the roll rate plant*
 
 
 
